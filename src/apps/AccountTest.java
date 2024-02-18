@@ -8,11 +8,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class AccountTest {
     @Test
-    public void testAccontCanDeposit() {
+    public void testAccontCanDeposit()throws InvalidAmountException{
         Account alex = new Account();
-        alex.deposit(new BigDecimal("12000.78"));
+        alex.deposit(new BigDecimal("12000"));
         try {
-            assertEquals(1200.78, alex.checkBalance("8912"));
+            assertEquals(new BigDecimal(12000), alex.checkBalance("8918"));
         } catch (InvalidPinException e) {
             throw new RuntimeException(e);
         }
