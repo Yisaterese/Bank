@@ -21,6 +21,6 @@ public class Account {
     public Object checkBalance(String pin) throws InvalidPinException{
         if(pin.length() == 4) return balance;
         else throw new InvalidPinException("Pin should have 4 digits");
-
     }
+
 }
