@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class AccountTest {
     @Test
-    public void testAccontCanDeposit()throws InvalidAmountException{
+    public void testAccontCanDeposit()throws Exception{
         Account alex = new Account();
         alex.deposit(new BigDecimal("12000"));
         try {
@@ -17,7 +17,8 @@ public class AccountTest {
             throw new RuntimeException(e);
         }
 
-
     }
+
+
 
 }
