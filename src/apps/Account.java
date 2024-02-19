@@ -37,7 +37,6 @@ public class Account {
         }
     }
 
-
     public void withdraw(BigDecimal amount, String pin)throws Exception{
         pinIsEqualToLengthOfFour(pin);
        if(amount.compareTo(balance) <= 0)
