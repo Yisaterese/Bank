@@ -8,9 +8,8 @@ public class Account {
     private  String pin;
     private String accountNumber;
 
-    public Account(String name, BigDecimal balance, String pin, String accountNumber){
+    public Account(String name, String pin, String accountNumber){
         this.name = name;
-        this.balance = balance;
         this.pin = pin;
         this.accountNumber = accountNumber;
     }
@@ -37,7 +36,7 @@ public class Account {
         }
     }
 
-    public void withdraw(BigDecimal amount, String pin)throws Exception{
+    public void withdraw(BigDecimal amount, String pin) throws Exception {
         pinIsEqualToLengthOfFour(pin);
        if(amount.compareTo(balance) <= 0)
             balance = balance.subtract(amount);
@@ -50,6 +49,10 @@ public class Account {
             return true;
         else
             throw new InvalidAccountException("account number must ten digits");
+    }
+
+    public String getAccountNumber() {
+        return  accountNumber;
     }
 
 }
