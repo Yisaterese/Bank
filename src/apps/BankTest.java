@@ -22,7 +22,5 @@ public class BankTest {
 
         bank.Withdraw(new BigDecimal("2000"), "3456456789", "2345");
         assertEquals(new BigDecimal("312"), bank.checkBalance("456456789", "2345"));
-
-
     }
 }
