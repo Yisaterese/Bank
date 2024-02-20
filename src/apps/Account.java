@@ -10,7 +10,7 @@ public class Account {
     public Account(String name, String pin,String accountNumber){
         this.pin = pin;
         this.accountNumber = accountNumber;
-        this.balance = new BigDecimal(0);
+        this.balance = new BigDecimal("0");
     }
 
    public void deposit(BigDecimal depositAmount)throws InvalidAmountException{

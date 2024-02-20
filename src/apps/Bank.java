@@ -30,12 +30,24 @@ public class Bank {
         account1.accountNumberIsValid(accountNumber);
         for (Account account : accounts) {
             if (account.getAccountNumber().equals(accountNumber))
-                if (account1.checkBalance("2345").compareTo(amount) > 0)
+                if (getCompareTo(amount) > 0)
                     account1.withdraw(amount, "2345");
                 else throw new InsufficientFundsException("Insufficient funds in your account");
         }
     }
 
+    private int getCompareTo(BigDecimal amount) throws Exception {
+        return account1.checkBalance("2345").compareTo(amount);
+    }
+
+    public void transfer(BigDecimal transferAmount, String userAccount, String recipientAccount, String userPin) throws Exception{
+        account1.pinIsEqualToLengthOfFour(userPin);
+        account1.accountNumberIsValid(userAccount); 
+        account1.accountNumberIsValid(recipientAccount);
+        getCompareTo(new BigDecimal(String.valueOf(transferAmount)));
+
+        
+    }
 }
 
 

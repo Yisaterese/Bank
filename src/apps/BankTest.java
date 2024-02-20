@@ -20,7 +20,7 @@ public class BankTest {
         bank = null;
     }
     @Test
-    public void testBankCanRegisterCustomer()throws Exception{
+    public void testBankCanMakeDeposit()throws Exception{
         bank.deposit(new BigDecimal("2312"), "3456456789");
         assertEquals(new BigDecimal("2312"), bank.checkBalance("3456456789","2345"));
     }
@@ -40,5 +40,9 @@ public class BankTest {
         assertEquals(new BigDecimal("312"), bank.checkBalance("456456789", "2345"));
         bank.deposit(new BigDecimal("2000"), "3456456789");
         assertEquals(new BigDecimal("2312"), bank.checkBalance("3456456789", "2345"));
+        bank.transfer(new BigDecimal("312"),  "3456456789", "12345678910", "2345");
+        assertEquals(new BigDecimal("2000"),  bank.checkBalance("3456456789", "2345"));
     }
+
+
 }
