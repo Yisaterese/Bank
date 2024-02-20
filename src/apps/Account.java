@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 public class Account {
     private String name;
-    private BigDecimal balance;
+    public static BigDecimal balance;
     private  String pin;
     private String accountNumber;
 
@@ -28,7 +28,7 @@ public class Account {
         pinIsEqualToLengthOfFour(pin);
         return balance;
     }
-    private static String pinIsEqualToLengthOfFour(String pin) throws Exception{
+     String pinIsEqualToLengthOfFour(String pin) throws Exception{
         if(pin.length() == 4){
             return pin;
         }else{
@@ -43,7 +43,7 @@ public class Account {
        else throw new InsufficientFundsException("withdraw amount shouldn't be greater than balance");
     }
 
-    private  boolean accountNumberIsValid(String accountNumber) throws Exception{
+     boolean accountNumberIsValid(String accountNumber) throws Exception{
         boolean accountNumberIsCorrect = accountNumber.length() == 10;
         if(accountNumberIsCorrect)
             return true;
