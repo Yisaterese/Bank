@@ -3,15 +3,14 @@ package apps;
 import java.math.BigDecimal;
 
 public class Account {
-    private String name;
     public static BigDecimal balance;
-    private  String pin;
-    private String accountNumber;
+    private final String pin;
+    private final String accountNumber;
 
-    public Account(String name, String pin, String accountNumber){
-        this.name = name;
+    public Account(String name, String pin,String accountNumber){
         this.pin = pin;
         this.accountNumber = accountNumber;
+        this.balance = new BigDecimal(0);
     }
 
    public void deposit(BigDecimal depositAmount)throws InvalidAmountException{
@@ -53,6 +52,9 @@ public class Account {
 
     public String getAccountNumber() {
         return  accountNumber;
+    }
+    public String getPin(){
+        return this.pin;
     }
 
 }
