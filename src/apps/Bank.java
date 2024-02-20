@@ -9,15 +9,17 @@ public class Bank {
     private final ArrayList<Account> accounts = new ArrayList<>();
 
     Account account1 = new Account("hannah", "2345",  "3456456789");
+    public Bank() {
+        accounts.add(account1);
+    }
 
     public void deposit(BigDecimal depositAmount, String number) throws Exception {
-        accounts.add(account1);
         for (Account account : accounts)
             if (account.getAccountNumber().equals(number))
                 account1.deposit(depositAmount);
-            else
-                throw new InvalidAccountException("Account number provided not found");
+
     }
+
 
     public BigDecimal checkBalance(String number, String pin) throws Exception {
         return account1.checkBalance("2345");
@@ -33,14 +35,7 @@ public class Bank {
                 else throw new InsufficientFundsException("Insufficient funds in your account");
         }
     }
-      /*  public String getStringValue() throws Exception {
-        String [] account = new String[accounts.size()];
-        int count =-1;
-        for(Account acc : accounts){
-            account[++count] = String.valueOf(acc.checkBalance(acc.getPin()));
-        }
-        return String.format("%s",Arrays.toString(account));
-    }*/
+
 }
 
 
