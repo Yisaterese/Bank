@@ -21,14 +21,12 @@ public class MyAccount {
         balance -= withdrawAmount;
     }
     private void validate(int withdrawAmount, String theCorrectPin){
-        if(isInvalid(withdrawAmount))throw new InvalidAmountException("Amount provided is invalid.");
+        if(isInvalid(withdrawAmount))throw new InvalidAmountException("Amount provided should be greater than zero.");
         if(!isEquals(theCorrectPin))throw new InvalidPinException("Provided pin is incorrect.");
-        if(!isValidAmount(withdrawAmount))throw new InssufficientFundsException("Insufficient funds in account.");\
-
-
+        if(!isValidAmount(withdrawAmount))throw new InssufficientFundsException("Insufficient funds in account.");
     }
     private boolean isInvalid(int withdrawAmount) {
-        return withdrawAmount <= this.balance;
+        return withdrawAmount <= 0;
     }
 
     private boolean isEquals(String theCorrectPin) {
