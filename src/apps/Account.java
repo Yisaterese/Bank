@@ -5,9 +5,9 @@ import java.math.BigDecimal;
 public class Account {
     public static BigDecimal balance;
     private final String pin;
-    private final String accountNumber;
+    private  String accountNumber = "3456456789";
 
-    public Account(String name, String pin,String accountNumber){
+    public Account(String name, String pin){
         this.pin = pin;
         this.accountNumber = accountNumber;
         this.balance = new BigDecimal("0");
@@ -27,7 +27,7 @@ public class Account {
         pinIsEqualToLengthOfFour(pin);
         return balance;
     }
-     String pinIsEqualToLengthOfFour(String pin) throws Exception{
+     static String pinIsEqualToLengthOfFour(String pin) throws Exception{
         if(pin.length() == 4){
             return pin;
         }else{
@@ -42,7 +42,7 @@ public class Account {
        else throw new InsufficientFundsException("withdraw amount shouldn't be greater than balance");
     }
 
-     boolean accountNumberIsValid(String accountNumber) throws Exception{
+    static boolean accountNumberIsValid(String accountNumber) throws Exception{
         boolean accountNumberIsCorrect = accountNumber.length() == 10;
         if(accountNumberIsCorrect)
             return true;
@@ -54,6 +54,7 @@ public class Account {
         return  accountNumber;
     }
     public String getPin(){
+
         return this.pin;
     }
 
