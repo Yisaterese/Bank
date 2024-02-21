@@ -1,7 +1,7 @@
 package apps;
 
-public class InvalidPinException extends Exception {
-    public InvalidPinException(String exceptionMessage){
-        super(exceptionMessage);
+public class InvalidPinException extends RuntimeException{
+    public InvalidPinException(String message){
+
     }
 }

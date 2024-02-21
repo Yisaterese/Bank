@@ -1,8 +1,7 @@
 package apps;
 
-public class InvalidAmountException extends Exception{
-    public InvalidAmountException(String exceptionMessage){
-        super(exceptionMessage);
+public class InvalidAmountException extends RuntimeException{
+    public  InvalidAmountException(String message){
 
     }
 }
