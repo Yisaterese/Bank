@@ -3,6 +3,7 @@ package apps;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class MyBankTest {
     @Test
@@ -37,6 +38,28 @@ public class MyBankTest {
         zenithBank.removeAccount(1234567890,"correctPin");
         zenithBank.removeAccount(1234567891,"correctPin");
         assertEquals(0, zenithBank.numberOfAccounts());
+    }
+
+    @Test
+    public void testBankCanRegisterThreeAccountsAndRemoveTheSecond_throwInvalidAccoundException(){
+        MyBank zenithBank = new MyBank();
+        MyAccount account1 = zenithBank.registerCustomer("Ayodele", "john", "correctPin");
+        MyAccount account2 = zenithBank.registerCustomer("Ayodele", "john", "correctPin");
+        MyAccount account3 = zenithBank.registerCustomer("Ayodele", "john", "correctPin");
+        assertEquals(3, zenithBank.numberOfAccounts());
+        zenithBank.removeAccount(account2.getAccountNumber(),"correctPin");
+        assertThrows(InvalidAccountException.class,() -> zenithBank.findAccount(account2.getAccountNumber()));
+    }
+
+    @Test
+    public void testBankCanRegisterThreeAccountsAndRemoveTheSecondWithWrongPin_throwInvalidPinException(){
+        MyBank zenithBank = new MyBank();
+        MyAccount account1 = zenithBank.registerCustomer("Ayodele", "john", "correctPin");
+        MyAccount account2 = zenithBank.registerCustomer("Ayodele", "john", "correctPin");
+        MyAccount account3 = zenithBank.registerCustomer("Ayodele", "john", "correctPin");
+        assertEquals(3, zenithBank.numberOfAccounts());
+        zenithBank.removeAccount(account2.getAccountNumber(),"correctPin");
+        assertThrows(InvalidPinException.class,() -> zenithBank.findAccount(account2.getAccountNumber()));
     }
 
 }

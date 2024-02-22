@@ -26,24 +26,20 @@ public class MyBank {
         }
     }
 
+    public MyAccount findAccount(int accountNumber){
+        for(MyAccount account: myAccounts){
+            if(isEquals(accountNumber, account)){
+                return account;
+            }
+        }
+       throw new InvalidAccountException("Account provided does not exist");
+    }
     private static boolean isEquals(int accountNumber, MyAccount account) {
         return account.getAccountNumber() == accountNumber;
     }
 
-  /*  public MyAccount findAccount(int accountNumber){
-        for(MyAccount account: myAccountList){
-            if(isValid(accountNumber, account)){
-                return account;
-            }
-        }
-        return null;
-    }
 
-    private static boolean isValid(int accountNumber, MyAccount account) {
-        return account.getAccountNumber() == accountNumber;
-    }
-
-    public void deposit(int depositAmount, int accountNumber){
+   /* public void deposit(int depositAmount, int accountNumber){
         for (MyAccount account : myAccountList){
            if(isValid(accountNumber, account)) {
                 account.deposit(depositAmount);
