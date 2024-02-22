@@ -5,13 +5,16 @@ import java.util.ArrayList;
 public class MyBank {
     private final ArrayList<MyAccount> myAccountList = new ArrayList<>();
     public void registerCustomer(String firstName, String lastName, String pin) {
-       MyAccount myAccount =  new MyAccount(firstName + " " +lastName, "correctPin");
+       MyAccount myAccount =  new MyAccount(firstName + " " +lastName, pin);
        myAccountList.add(myAccount);
    }
 
-    public int findAccount(int accountNumber){
-        for(MyAccount accounts: myAccountList){
-            if(accounts.getAccountNumber() == accountNumber)
+    public MyAccount findAccount(int accountNumber){
+        for(MyAccount account: myAccountList){
+            if(account.getAccountNumber() == accountNumber){
+                return account;
+            }
         }
+        return null;
     }
 }

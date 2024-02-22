@@ -11,7 +11,6 @@ public class MyAccount {
     public void deposit(int depositAmount) {
         balance += depositAmount;
     }
-
     public int checkBalance(String  myCorrectPin ) {
         return balance;
     }
