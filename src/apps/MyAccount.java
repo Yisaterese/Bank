@@ -1,15 +1,19 @@
 package apps;
 
 public class MyAccount {
-
+        private int accountNumber= 0;
 
     public MyAccount(String name, String pin){
         this.name = name;
-        this.balance = 0;
         this.pin = pin;
+        this.accountNumber =0;
     }
+
     public void deposit(int depositAmount) {
         balance += depositAmount;
+    }
+    public void setAccountNumber(int accountNumber){
+        this.accountNumber = accountNumber;
     }
     public int checkBalance(String  myCorrectPin ) {
         return balance;
@@ -22,7 +26,7 @@ public class MyAccount {
 
     public int getAccountNumber() {
         return accountNumber;
-    }
+   }
     private void validate(int withdrawAmount, String theCorrectPin){
         if(isInvalid(withdrawAmount))throw new InvalidAmountException("Amount provided should be greater than zero.");
         if(!isEquals(theCorrectPin))throw new InvalidPinException("Provided pin is incorrect.");
@@ -32,7 +36,7 @@ public class MyAccount {
     private boolean isInvalid(int withdrawAmount) {
         return withdrawAmount <= 0;
     }
-    private boolean isEqualsLengthOf(String theCorrectPin){
+    static boolean isEqualsLengthOf(String theCorrectPin){
         return theCorrectPin.length() == 10;
     }
 
@@ -44,8 +48,6 @@ public class MyAccount {
     }
     private String name;
     private int balance;
-    private String pin;
-    private int accountNumber;
-
+    private final String pin;
 
 }
