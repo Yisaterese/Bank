@@ -3,7 +3,7 @@ package apps;
 public class MyAccount {
 
 
-    public MyAccount(String name, int balance, String pin){
+    public MyAccount(String name, String pin){
         this.name = name;
         this.balance = 0;
         this.pin = pin;
@@ -19,6 +19,10 @@ public class MyAccount {
     public  void withdraw(int withdrawAmount, String theCorrectPin) {
         validate(withdrawAmount, theCorrectPin);
         balance -= withdrawAmount;
+    }
+
+    public int getAccountNumber() {
+        return accountNumber;
     }
     private void validate(int withdrawAmount, String theCorrectPin){
         if(isInvalid(withdrawAmount))throw new InvalidAmountException("Amount provided should be greater than zero.");
@@ -44,4 +48,6 @@ public class MyAccount {
     private int balance;
     private String pin;
     private int accountNumber;
+
+
 }
