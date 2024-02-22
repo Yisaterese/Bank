@@ -39,7 +39,6 @@ public class MyAccount {
     private boolean isEquals(String theCorrectPin) {
         return this.pin.equals(theCorrectPin) && isEqualsLengthOf(theCorrectPin);
     }
-
     private boolean isValidAmount(int  withdrawAmount){
       return  withdrawAmount <= balance;
     }
