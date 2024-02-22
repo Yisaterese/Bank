@@ -10,7 +10,8 @@ public class MyBankTest {
     public void testBankCanRegisterCustomer_customerIsOne(){
         MyBank zenithBank = new MyBank();
         zenithBank.registerCustomer("Ayodele", "john", "correctPin");
-        assertEquals(1, zenithBank.numberOfAccounts());
+        zenithBank.registerCustomer("Ayodele", "john", "correctPin");
+        assertEquals(2, zenithBank.numberOfAccounts());
     }
     @Test
     public void testBankCanRegisterTwoCustomer_customerAreTwo(){
@@ -58,7 +59,7 @@ public class MyBankTest {
         MyAccount account2 = zenithBank.registerCustomer("Ayodele", "john", "correctPin");
         MyAccount account3 = zenithBank.registerCustomer("Ayodele", "john", "correctPin");
         assertEquals(3, zenithBank.numberOfAccounts());
-        zenithBank.removeAccount(account2.getAccountNumber(),"correctPin");
+        zenithBank.removeAccount(account2.getAccountNumber(),"IncorrectPin");
         assertThrows(InvalidPinException.class,() -> zenithBank.findAccount(account2.getAccountNumber()));
     }
 

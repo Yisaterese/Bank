@@ -8,7 +8,6 @@ public class MyBank {
     public MyAccount registerCustomer(String firstName, String lastName, String pin) {
        MyAccount myAccount =  new MyAccount(firstName + " " +lastName, pin);
        myAccount.setAccountNumber(accountNumber++);
-       //myAccount.accountNumber++;
        myAccounts.add(myAccount);
        return myAccount;
    }
@@ -19,10 +18,10 @@ public class MyBank {
 
     public void removeAccount(int accountNumber, String myPin) {
         for(MyAccount account: myAccounts){
-            if(isEquals(accountNumber, account)) {
-                myAccounts.remove(account);
-                break;
-            }
+            if(!isEquals(accountNumber, account)) throw new InvalidAccountException("Account provided does not exist");
+            if(!isValidate(myPin))throw new InvalidPinException("Incorrect pin");
+            myAccounts.remove(account);
+               // break;
         }
     }
 
@@ -37,8 +36,9 @@ public class MyBank {
     private static boolean isEquals(int accountNumber, MyAccount account) {
         return account.getAccountNumber() == accountNumber;
     }
-
-
+    private boolean isValidate(String pin) {
+        return MyAccount.isEqualsLengthOf(pin);
+    }
    /* public void deposit(int depositAmount, int accountNumber){
         for (MyAccount account : myAccountList){
            if(isValid(accountNumber, account)) {
@@ -58,8 +58,7 @@ public class MyBank {
         }
         throw new InvalidAccountException("Provided account does not exist");
     }
-    private boolean isValidate(String pin) {
-        return MyAccount.isEqualsLengthOf(pin);
+
     }
     }*/
 }
