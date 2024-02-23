@@ -17,17 +17,10 @@ public class MyBank {
       }
 
     public void removeAccount(int accountNumber, String myPin){
-        Iterator<MyAccount> iterator = myAccounts.iterator();
-        while (iterator.hasNext()){
-            MyAccount myAccount = iterator.next();
-            /*if(!isEquals(accountNumber, myAccount)) {
-                throw new InvalidAccountException("account provided does not exist.");
-            }
-            if(!isValidate(myPin)) {
-                throw new InvalidPinException("Incorrect pin.");
-            }*/
-            iterator.remove();
-        }
+        MyAccount foundAccount = findAccount(accountNumber);
+        isValidate(myPin);
+            myAccounts.remove(foundAccount);
+        numberOfAccounts --;
     }
 
     public void deposit(int depositAmount, int accountNumber){

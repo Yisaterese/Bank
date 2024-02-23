@@ -21,12 +21,12 @@ public class MyBankTest {
         assertEquals(2, zenithBank.numberOfAccounts());
     }
     @Test
-    public void testBankCanRegisterTwoCustomerAndRemoveOne_accountIsRemainingOne(){
+    public void registerTwoCustomers_RemoveOne_accountIsRemainingOneTest(){
         MyBank zenithBank = new MyBank();
-        zenithBank.registerCustomer("Ayodele", "john", "correctPin");
-        zenithBank.registerCustomer("Ayodele", "john", "correctPin");
+        MyAccount account1 = zenithBank.registerCustomer("Ayodele", "john", "correctPin");
+        MyAccount account2 = zenithBank.registerCustomer("Ayodele", "john", "correctPin");
         assertEquals(2, zenithBank.numberOfAccounts());
-        zenithBank.removeAccount(1234567890,"correctPin");
+        zenithBank.removeAccount(account2.getAccountNumber(),"correctPin");
         assertEquals(1, zenithBank.numberOfAccounts());
     }
 
@@ -88,5 +88,19 @@ public class MyBankTest {
         zenithBank.transfer(3_000, account1.getAccountNumber(), account2.getAccountNumber(), "correctPin");
         assertEquals(2_000, zenithBank.checkBalance(account1.getAccountNumber(), "correctpin"));
     }
+
+
+    @Test
+    public void testBankCanRegisterThreeAccountsAndRomAccountOne() {
+        MyBank zenithBank = new MyBank();
+        MyAccount account1 = zenithBank.registerCustomer("Ayodele", "john", "correctPin");
+        MyAccount account2 = zenithBank.registerCustomer("Ayodele", "john", "correctPin");
+        MyAccount account3 = zenithBank.registerCustomer("Ayodele", "john", "correctPin");
+        zenithBank.deposit(5_000, account1.getAccountNumber());
+        zenithBank.transfer(3_000, account1.getAccountNumber(), account2.getAccountNumber(), "correctPin");
+        zenithBank.removeAccount(account2.getAccountNumber(), "correctPin");
+        assertThrows(InvalidAccountException.class,()-> zenithBank.findAccount(account2.getAccountNumber()));
+    }
+
 
 }
