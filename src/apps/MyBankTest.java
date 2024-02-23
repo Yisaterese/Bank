@@ -66,8 +66,27 @@ public class MyBankTest {
     public void testAccountDeposit(){
         MyBank zenithBank = new MyBank();
         MyAccount account1 = zenithBank.registerCustomer("Ayodele", "john", "correctPin");
-        zenithBank.deposit(1234567890, 5_000);
+        zenithBank.deposit(5_000, 1234567890);
         assertEquals(5_000, zenithBank.checkBalance(1234567890, "correctPin"));
+    }
+
+    @Test
+    public void testAccountDepositWithdrawAndCheckBalance(){
+        MyBank zenithBank = new MyBank();
+        MyAccount account1 = zenithBank.registerCustomer("Ayodele", "john", "correctPin");
+        zenithBank.deposit(5_000, 1234567890);
+        zenithBank.withdraw(5_000, 1234567890, "correctPin");
+        assertEquals(0, zenithBank.checkBalance(1234567890, "correctPin"));
+    }
+
+    @Test
+    public void testAccountCanTransferFromAccountOne_toAccountTwo() {
+        MyBank zenithBank = new MyBank();
+        MyAccount account1 = zenithBank.registerCustomer("Ayodele", "john", "correctPin");
+        MyAccount account2 = zenithBank.registerCustomer("Ayodele", "john", "correctPin");
+        zenithBank.deposit(5_000, account1.getAccountNumber());
+        zenithBank.transfer(3_000, account1.getAccountNumber(), account2.getAccountNumber(), "correctPin");
+        assertEquals(2_000, zenithBank.checkBalance(account1.getAccountNumber(), "correctpin"));
     }
 
 }
