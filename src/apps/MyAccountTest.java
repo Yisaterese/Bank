@@ -22,7 +22,7 @@ public class MyAccountTest {
         assertEquals(0, myAccount.checkBalance("correctPin"));
     }
     @Test
-    public void testAccountWithdraw(){
+    public void withdrawFromAccountTest(){
         MyAccount myAccount = new MyAccount("fidel",  "correctPin");
         myAccount.deposit(3_000);
         myAccount.withdraw(1_000, "correctPin");
@@ -31,13 +31,12 @@ public class MyAccountTest {
     }
 
     @Test
-    public void testAccountWithWrongPin(){
+    public void withdrawWithWrongPin_throwInvalidPinException(){
         MyAccount myAccount = new MyAccount("fidel", "correctPin");
         myAccount.deposit(3_000);
         assertThrows(InvalidPinException.class, ()-> myAccount.withdraw(1_000, "inCorrectPin"));
 
     }
-
 
     @Test
     public void withdrawAboveBalance_throwInsufficientFundsException() {
@@ -45,7 +44,6 @@ public class MyAccountTest {
         myAccount.deposit(3_000);
         assertThrows(InssufficientFundsException.class,()-> myAccount.withdraw(4_000, "correctPin"));
     }
-
     @Test
     public void withdrawMinus3k_throwsInvalidAmountException(){
         MyAccount myAccount = new MyAccount("fidel", "correctPin");
