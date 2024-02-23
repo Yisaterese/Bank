@@ -53,15 +53,15 @@ public class MyBankTest {
     }
 
     @Test
-    public void testBankCanRegisterThreeAccountsAndRemoveTheSecondWithWrongPin_throwInvalidPinException(){
+    public void registerThreeAccounts_RemoveSecondWithWrongPin_throwInvalidPinExceptionTest(){
         MyBank zenithBank = new MyBank();
-        MyAccount account1 = zenithBank.registerCustomer("Ayodele", "john", "correctPin");
-        MyAccount account2 = zenithBank.registerCustomer("Ayodele", "john", "correctPin");
+        MyAccount account1 = zenithBank.registerCustomer("Ayo", "john", "correctPin");
+        MyAccount account2 = zenithBank.registerCustomer("Ayodele", "joe", "correctPin");
         MyAccount account3 = zenithBank.registerCustomer("Ayodele", "john", "correctPin");
         assertEquals(3, zenithBank.numberOfAccounts());
-        zenithBank.removeAccount(account3.getAccountNumber(),"IncorrectPin");
-        assertThrows(InvalidPinException.class,() -> zenithBank.findAccount(account2.getAccountNumber()));
+        assertThrows(InvalidPinException.class,() -> zenithBank.removeAccount(account3.getAccountNumber(),"IncorrectPin"));
     }
+
     @Test
     public void testAccountDeposit(){
         MyBank zenithBank = new MyBank();
@@ -102,5 +102,14 @@ public class MyBankTest {
         assertThrows(InvalidAccountException.class,()-> zenithBank.findAccount(account2.getAccountNumber()));
     }
 
+    @Test
+    public void registerThreeAccounts_RemoveSecondWithWrongAccount_throwInvalidAccountExceptionTest(){
+        MyBank zenithBank = new MyBank();
+        MyAccount account1 = zenithBank.registerCustomer("Ayo", "john", "correctPin");
+        MyAccount account2 = zenithBank.registerCustomer("Ayodele", "joe", "correctPin");
+        MyAccount account3 = zenithBank.registerCustomer("Ayodele", "john", "correctPin");
+        assertEquals(3, zenithBank.numberOfAccounts());
+        assertThrows(InvalidAccountException.class,() -> zenithBank.removeAccount(123456795,"IncorrectPin"));
+    }
 
 }
