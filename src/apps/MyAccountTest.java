@@ -53,9 +53,8 @@ public class MyAccountTest {
         assertThrows(InvalidAmountException.class,()-> myAccount.withdraw(-2_000, "correctPin"));
     }
     @Test
-    public void withdrawWithoutDepositingTest(){
+    public void withdrawWithoutDepositing_throwInsufficientFundsExceptionTest(){
         MyAccount myAccount = new MyAccount("fidel", "correctPin");
-        myAccount.withdraw(1_000, "correctPin");
         assertThrows(InssufficientFundsException.class,()-> myAccount.withdraw(1_000, "correctPin"));
     }
 }
