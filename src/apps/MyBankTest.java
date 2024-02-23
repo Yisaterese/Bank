@@ -59,8 +59,15 @@ public class MyBankTest {
         MyAccount account2 = zenithBank.registerCustomer("Ayodele", "john", "correctPin");
         MyAccount account3 = zenithBank.registerCustomer("Ayodele", "john", "correctPin");
         assertEquals(3, zenithBank.numberOfAccounts());
-        zenithBank.removeAccount(account2.getAccountNumber(),"IncorrectPin");
+        zenithBank.removeAccount(account3.getAccountNumber(),"IncorrectPin");
         assertThrows(InvalidPinException.class,() -> zenithBank.findAccount(account2.getAccountNumber()));
+    }
+    @Test
+    public void testAccountDeposit(){
+        MyBank zenithBank = new MyBank();
+        MyAccount account1 = zenithBank.registerCustomer("Ayodele", "john", "correctPin");
+        zenithBank.deposit(1234567890, 5_000);
+        assertEquals(5_000, zenithBank.checkBalance(1234567890, "correctPin"));
     }
 
 }
