@@ -7,9 +7,13 @@ private final ArrayList<Entry> entries = new ArrayList<>();
 private boolean isLocked;
 private int numberOfEntries;
 private int id = 1;
+private String userName;
+private String password;
 
-
-
+    public Diary(String userName, String password){
+        this.userName = userName;
+        this.password = password;
+    }
     public boolean isLocked() {
             return  isLocked ;
     }
