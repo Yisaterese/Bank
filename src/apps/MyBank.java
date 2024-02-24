@@ -91,24 +91,4 @@ public class MyBank {
         throw new InvalidAccountException("Incorrect account number");
     }
 
-
-
-
-    /*private static boolean isEquals(int accountNumber, MyAccount account) {
-        return isEquals(accountNumber, account);
-    }*/
-
-   /*
-
-      public void removeAccount(int accountNumber, String myPin) {
-        for(MyAccount account: myAccounts){
-            if(!isEquals(accountNumber, account)) throw new InvalidAccountException("Account provided does not exist");
-            if(!isValidate(myPin)) throw new InvalidPinException("Incorrect pin");
-            myAccounts.remove(account);
-        }
-
-    }
-
-    }
-    }*/
 }

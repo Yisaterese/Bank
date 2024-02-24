@@ -91,7 +91,7 @@ public class MyBankTest {
 
 
     @Test
-    public void testBankCanRegisterThreeAccountsAndRomAccountOne() {
+    public void testBankCanRegisterThreeAccountsAndRemoveAccountOne() {
         MyBank zenithBank = new MyBank();
         MyAccount account1 = zenithBank.registerCustomer("Ayodele", "john", "correctPin");
         MyAccount account2 = zenithBank.registerCustomer("Ayodele", "john", "correctPin");
