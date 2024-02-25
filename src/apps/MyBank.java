@@ -10,7 +10,7 @@ public class MyBank {
        myAccounts.add(myAccount);
        return myAccount;
    }
-    private int  numberOfAccounts;
+
       public int numberOfAccounts(){
           return myAccounts.size();
       }
@@ -75,7 +75,7 @@ public class MyBank {
         throw new InvalidAccountException("Provided account does not exist");
     }
     private final ArrayList<MyAccount> myAccounts = new ArrayList<>();
-    private   int accountNumber = 1234567890;
+
     private boolean isEquals(String pin) {
         return MyAccount.isEqualsLengthOf(pin);
     }
@@ -89,5 +89,7 @@ public class MyBank {
                 return true;
         throw new InvalidAccountException("Incorrect account number");
     }
+    private   int accountNumber = 1234567890;
+    private int  numberOfAccounts;
 
 }

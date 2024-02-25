@@ -10,7 +10,7 @@ private int id = 1;
 private String userName;
 private String password;
 
-    private Diary(String userName, String password){
+    public Diary(String userName, String password){
         this.userName = userName;
         this.password = password;
     }
@@ -37,11 +37,10 @@ private String password;
         return entries.size();
     }
 
-    public Entry createEntry(String titleOfEntry, String bodyOfEntry) {
+    public void createEntry(String titleOfEntry, String bodyOfEntry) {
         Entry entry = new Entry(titleOfEntry, bodyOfEntry);
         entry.setId(id++);
         entries.add(entry);
-        return entry;
     }
 
     public void deleteEntry(int identification) {
@@ -84,5 +83,9 @@ private String password;
     public void upDateEntry(int id, String titleOfEntry, String bodyOfEntry ) {
          Entry foundEntry = findEntryById(id);
 
+    }
+
+    public String getUserName() {
+        return userName;
     }
 }
