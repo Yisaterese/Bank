@@ -1,7 +1,6 @@
 package apps;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class MyBank {
 

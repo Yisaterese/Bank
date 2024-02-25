@@ -90,8 +90,10 @@ public class DiaryTest {
         assertTrue(diary.isLocked());
         diary.createEntry("My first experience at beach", "I saw beautiful ladies");
         diary.createEntry("My first experience in lagos", "I saw shege");
-        diary.upDateEntry(1, "My first day as a native", "Everything  was weird");
         Entry diary1 = diary.findEntryById(1);
+        System.out.println(diary1);
+        diary.upDateEntry(1, "My first day as a native", "Everything  was weird");
+
         assertEquals("My first day as a native",diary1.getTitleOfEntry());
 
     }
