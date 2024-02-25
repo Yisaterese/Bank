@@ -24,7 +24,17 @@ public class Diaries {
         return diaries.size();
     }
 
-    public void delete(String userName, String Password) {
+    public void delete(String userName, String password) {
+        for (Diary myDiary : diaries) {
+            if (isValid(userName, password, myDiary))
+                diaries.remove(myDiary);
+            myDiary.getNumberOfEntries();
+        }
 
+
+    }
+
+    private static boolean isValid(String userName, String password, Diary myDiary) {
+        return myDiary.getUserName().equals(userName) && myDiary.getPassword().equals(password);
     }
 }

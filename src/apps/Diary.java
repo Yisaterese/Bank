@@ -88,4 +88,8 @@ private String password;
     public String getUserName() {
         return userName;
     }
+
+    public Object getPassword() {
+        return password;
+    }
 }
