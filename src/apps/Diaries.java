@@ -20,4 +20,11 @@ public class Diaries {
         throw new InvalidUserNameException("UserName not found");
     }
 
+    public int getNumberOfDiaries() {
+        return diaries.size();
+    }
+
+    public void delete(String userName, String Password) {
+
+    }
 }
