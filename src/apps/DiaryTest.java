@@ -94,8 +94,5 @@ public class DiaryTest {
         Entry diary1 = diary.findEntryById(1);
         assertEquals("My first day as a native",diary1.getTitleOfEntry());
 
-
-
-
     }
 }
