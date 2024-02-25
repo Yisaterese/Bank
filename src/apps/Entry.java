@@ -1,5 +1,7 @@
 package apps;
 
+import javax.lang.model.element.NestingKind;
+
 public class Entry {
     private int id;
     private String titleOfEntry;
@@ -12,4 +14,9 @@ public class Entry {
     public void setId(int id) {
         this.id = id;
     }
+
+    public String getTitleOfEntry(){
+        return titleOfEntry;
+    }
+
 }

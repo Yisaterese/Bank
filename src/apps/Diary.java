@@ -10,10 +10,15 @@ private int id = 1;
 private String userName;
 private String password;
 
-    public Diary(String userName, String password){
+    private Diary(String userName, String password){
         this.userName = userName;
         this.password = password;
     }
+
+    public static Diary createDiary(String userName, String password) {
+        return new Diary(userName, password);
+    }
+
     public boolean isLocked() {
             return  isLocked ;
     }
@@ -48,7 +53,7 @@ private String password;
 
     }
 
-    public Entry findEntryById(int identification) throws InvalidIdException {
+    public Entry findEntryById(int identification){
         for(Entry entry: entries)
             if (isCorrect(identification)) {
                 return entry;
@@ -74,5 +79,10 @@ private String password;
                 return true;
         }
         return false;
+    }
+
+    public void upDateEntry(int id, String titleOfEntry, String bodyOfEntry ) {
+         Entry foundEntry = findEntryById(id);
+
     }
 }
