@@ -24,9 +24,10 @@ public class DiariesTest {
     @Test
     public void addToListOfDiaries_deleteTest(){
         Diaries diaries = new Diaries();
-        diaries.add("Asa", "correctPassword");
+        Diary diary = new Diary("username", "password");
+        diaries.add("username", "password");
         assertEquals(1,diaries.getNumberOfDiaries());
-        diaries.delete("Asa", "correctPassword");
+        diaries.delete("username", "password");
         assertEquals(0,diaries.getNumberOfDiaries());
     }
 

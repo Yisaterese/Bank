@@ -5,7 +5,7 @@ import InvalidUserNameException.InvalidUserNameException;
 import java.util.ArrayList;
 
 public class Diaries {
-    private ArrayList<Diary> diaries = new ArrayList<>();
+    private final ArrayList<Diary> diaries = new ArrayList<>();
     public void add(String userName, String password){
         Diary diary = new Diary(userName, password);
         diaries.add(diary);
@@ -25,16 +25,12 @@ public class Diaries {
     }
 
     public void delete(String userName, String password) {
-        for (Diary myDiary : diaries) {
-            if (isValid(userName, password, myDiary))
-                diaries.remove(myDiary);
-            myDiary.getNumberOfEntries();
-        }
-
+        Diary diary = findByUserName(userName);
+        if(isPasswordValid(password, diary))diaries.remove(diary);
 
     }
 
-    private static boolean isValid(String userName, String password, Diary myDiary) {
-        return myDiary.getUserName().equals(userName) && myDiary.getPassword().equals(password);
+    private static boolean isPasswordValid(String password, Diary myDiary) {
+        return myDiary.getPassword().equals(password);
     }
 }

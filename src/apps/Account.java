@@ -31,9 +31,9 @@ public class Account {
      static String pinIsEqualToLengthOfFour(String pin) throws Exception{
         if(pin.length() == 4){
             return pin;
-        }else{
-            throw new InvalidPinException("Pin should be 4 digits");
         }
+        throw new InvalidPinException("Pin should be 4 digits");
+
     }
 
     public void withdraw(BigDecimal amount, String pin) throws Exception {

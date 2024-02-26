@@ -89,7 +89,7 @@ private String password;
         return userName;
     }
 
-    public Object getPassword() {
+    public String getPassword() {
         return password;
     }
 }
