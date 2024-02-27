@@ -49,7 +49,6 @@ private final String password;
 
     public void deleteEntry(int identification) {
         Entry foundEntry = findEntryById(identification);
-            //if(isCorrect(identification))
         entries.remove(foundEntry);
         numberOfEntries--;
        // entries.remove(findEntryById(identification));
