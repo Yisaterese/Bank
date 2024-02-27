@@ -54,7 +54,6 @@ private final String password;
        // entries.remove(findEntryById(identification));
 
     }
-
     public Entry findEntryById(int identification){
             for(Entry entry: entries){
                 if(entry.getId() == identification)
@@ -62,7 +61,6 @@ private final String password;
             }
         throw new InvalidIdException("entry not found");
     }
-
     private boolean isCorrect(int identification) {
         if(identification >= 1)
             return getId() == identification;
