@@ -70,8 +70,6 @@ private final String password;
     public int getId(){
         return id;
     }
-
-
     public boolean isEquals(int identification){
         for(Entry entry : entries) {
             if (entry.equals(identification))
