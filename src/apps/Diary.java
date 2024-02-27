@@ -1,5 +1,9 @@
 package apps;
 
+import InvalidBodyException.InvalidBodyException;
+import InvalidPasswordException.InvalidPasswordException;
+import InvalidTitleException.InvalidTitleException;
+
 import java.util.ArrayList;
 
 public class Diary {
@@ -7,8 +11,8 @@ private final ArrayList<Entry> entries = new ArrayList<>();
 private boolean isLocked;
 private int numberOfEntries;
 private int id = 1;
-private String userName;
-private String password;
+private  String userName;
+private final String password;
 
     public Diary(String userName, String password){
         this.userName = userName;
@@ -45,19 +49,18 @@ private String password;
 
     public void deleteEntry(int identification) {
         Entry foundEntry = findEntryById(identification);
-        if(isCorrect(identification))
-            entries.remove(foundEntry);
+            //if(isCorrect(identification))
+        entries.remove(foundEntry);
         numberOfEntries--;
        // entries.remove(findEntryById(identification));
 
     }
 
     public Entry findEntryById(int identification){
-        for(Entry entry: entries)
-            if (isCorrect(identification)) {
-                return entry;
+            for(Entry entry: entries){
+                if(entry.getId() == identification)
+                    return entry;
             }
-
         throw new InvalidIdException("entry not found");
     }
 
@@ -82,8 +85,14 @@ private String password;
 
     public void upDateEntry(int id, String titleOfEntry, String bodyOfEntry ) {
          Entry foundEntry = findEntryById(id);
-
+         foundEntry.setTitle(titleOfEntry);
+         foundEntry.setBodyOfEntry(bodyOfEntry);
+         entries.remove(foundEntry);
+         entries.add(foundEntry);
     }
+
+
+
 
     public String getUserName() {
         return userName;

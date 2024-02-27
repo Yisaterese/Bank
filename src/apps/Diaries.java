@@ -1,5 +1,6 @@
 package apps;
 
+import InvalidPasswordException.InvalidPasswordException;
 import InvalidUserNameException.InvalidUserNameException;
 
 import java.util.ArrayList;
@@ -26,11 +27,13 @@ public class Diaries {
 
     public void delete(String userName, String password) {
         Diary diary = findByUserName(userName);
-        if(isPasswordValid(password, diary))diaries.remove(diary);
+        if(!isPasswordValid(password, diary)) throw new InvalidPasswordException("Incorrect password");
+        diaries.remove(diary);
 
     }
 
     private static boolean isPasswordValid(String password, Diary myDiary) {
-        return myDiary.getPassword().equals(password);
+            return myDiary.getPassword().equals(password);
+
     }
 }

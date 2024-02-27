@@ -21,4 +21,14 @@ public class Entry {
         return titleOfEntry;
     }
 
+    public String getBodyOfEntry() {return bodyOfEntry;
+    }
+
+    public void setTitle(String titleOfEntry) {
+        this.titleOfEntry = titleOfEntry;
+    }
+
+    public void setBodyOfEntry(String bodyOfEntry) {
+        this.bodyOfEntry = bodyOfEntry;
+    }
 }

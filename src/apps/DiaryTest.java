@@ -54,7 +54,7 @@ public class DiaryTest {
         diary.createEntry("My first experience at beach", "I saw beautiful ladies");
         diary.createEntry("My first experience at beach", "I saw beautiful ladies");
         assertEquals(2, diary.getNumberOfEntries());
-        diary.deleteEntry(diary.getId());
+        diary.deleteEntry(1);
         assertEquals(1,diary.getNumberOfEntries());
     }
     @Test
@@ -92,7 +92,6 @@ public class DiaryTest {
         diary.createEntry("My first experience in lagos", "I saw shege");
         diary.upDateEntry(1, "My first day as a native", "Everything  was weird");
         Entry diary1 = diary.findEntryById(1);
-        System.out.println(diary1);
         assertEquals("My first day as a native",diary1.getTitleOfEntry());
 
     }
