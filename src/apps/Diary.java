@@ -86,9 +86,6 @@ private final String password;
          entries.add(foundEntry);
     }
 
-
-
-
     public String getUserName() {
         return userName;
     }
