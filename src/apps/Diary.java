@@ -1,9 +1,5 @@
 package apps;
 
-import InvalidBodyException.InvalidBodyException;
-import InvalidPasswordException.InvalidPasswordException;
-import InvalidTitleException.InvalidTitleException;
-
 import java.util.ArrayList;
 
 public class Diary {

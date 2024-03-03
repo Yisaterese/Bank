@@ -16,6 +16,7 @@ public class MyAccount {
         this.accountNumber = accountNumber;
     }
     public int checkBalance(String  myCorrectPin ) {
+        if(!isEquals(myCorrectPin))throw new InvalidPinException("Provided pin is incorrect.");
         return balance;
     }
 
