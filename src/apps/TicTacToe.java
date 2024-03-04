@@ -41,27 +41,14 @@ public class TicTacToe {
     }
 
     public void pickCell(int row, int col, CellValues cellValues) {
-        if(isValidRowAndColumn(row, col, cellValues))throw new IndexOutOfBoundsException("index out of bound");
+        if (isValidRowAndColumn(row, col, cellValues)) throw new IndexOutOfBoundsException("index out of bound");
     }
 
     private boolean isValidRowAndColumn(int row, int col, CellValues cellValues) {
-        if(row >= 0 && row < 2 && col >= 0 && col < 2)
+        if (row >= 0 && row < 2 && col >= 0 && col < 2)
             boardCells[row][col] = cellValues;
         throw new IndexOutOfBoundsException("Out of bound index exception");
     }
 
 
-    public CellValues[][] getWinByRow() {
-        return boardCells;
-    }
-
-    /*public CellValues[][] getIndexPosition() {
-        for(int row = 0; row < boardCells.length; row++){
-            for(int col = 0; col < boardCells[row].length; col++){
-                if (boardCells[row][col] == X){
-                    return getValueOfBoardCells();
-                }
-            }
-        }
-    }*/
 }
