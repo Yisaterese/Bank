@@ -1,10 +1,5 @@
 package apps;
 
-import InvalidCellRepresentationException.InvalidCellRepresentationException;
-import InvalidPasswordException.InvalidPasswordException;
-
-import static apps.CellValues.X;
-
 public class TicTacToe {
     private final CellValues[][] boardCells = new CellValues[3][3];
 
@@ -20,7 +15,7 @@ public class TicTacToe {
         }
     }
 
-    public int getLengthOfGame() {
+    public int getLengthOfBoardCells() {
         return boardCells.length;
     }
 
@@ -42,7 +37,7 @@ public class TicTacToe {
 
     public void pickCell(int row, int col, CellValues cellValues) {
         if(!isValidRowAndColumn(row, col, cellValues)) {
-            throw new IndexOutOfBoundsException("index out of bound");
+           throw new IndexOutOfBoundsException("index out of bound");
         }
     }
 

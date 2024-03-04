@@ -2,7 +2,6 @@ package apps;
 
 import org.junit.jupiter.api.Test;
 
-import static apps.CellValues.EMPTY;
 import static apps.CellValues.X;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -11,7 +10,7 @@ public class TicTacToeTest {
     @Test
     public void lengthOfArrayIs3by3Test() {
         TicTacToe ticTacToe = new TicTacToe();
-        assertEquals(3, ticTacToe.getLengthOfGame());
+        assertEquals(3, ticTacToe.getLengthOfBoardcells());
     }
 
     @Test
