@@ -1,21 +1,46 @@
 package apps;
 
+import InvalidCellRepresentationException.InvalidCellRepresentationException;
+
 public class TicTacToe {
-    private CellValues[][] board = new CellValues[3][3];
-    public TicTacToe(){
-        this.board = populateBoardCells();
+    private final CellValues[][] boardCells = new CellValues[3][3];
+   public TicTacToe(){
+        populateBoardCells();
     }
 
-    public CellValues[][] populateBoardCells(){
-            for (int row = 0; row < 3; row++) {
-                for (int col = 0; col < 3; col++) {
-                    board[row][col] = CellValues.EMPTY;
+    public void populateBoardCells(){
+            for (int row = 0; row < boardCells.length; row++) {
+                for (int col = 0; col < boardCells[row].length; col++) {
+                    boardCells[row][col] = CellValues.EMPTY;
                 }
             }
-            return board;
+    }
+    public int getLengthOfGame() {
+        return boardCells.length;
     }
 
-    public int getLengthOfGame() {
-        return board.length;
+    public void printBoardCells(){
+        System.out.println("------------------------");
+        for (int row = 0; row < boardCells.length; row++) {
+            System.out.print("|");
+            for (int col = 0; col < boardCells[row].length; col++) {
+                System.out.print(boardCells[row][col] + " | ");
+            }
+            System.out.println();
+            System.out.println("------------------------");
+        }
     }
+
+    public CellValues[] getValueOfBoardCells() {
+       CellValues[] newCellValues = new CellValues[boardCells.length];
+       int counter = 0;
+       for(int row = 0; row < boardCells.length; row++){
+           for (int col = 0; col < boardCells[row].length; col++){
+              newCellValues[counter]= boardCells[row][col];
+              counter++;
+           }
+       }
+        return newCellValues;
+    }
+
 }

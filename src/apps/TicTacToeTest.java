@@ -17,4 +17,10 @@ public class TicTacToeTest {
         TicTacToe ticTacToe = new TicTacToe();
         assertEquals(0,ticTacToe);
     }
+    @Test
+    public void checkIfBoardCellsAreEmptyTest(){
+        TicTacToe ticTacToe = new TicTacToe();
+        ticTacToe.populateBoardCells();
+        assertEquals(CellValues.EMPTY,ticTacToe.getValueOfBoardCells());
+    }
 }
