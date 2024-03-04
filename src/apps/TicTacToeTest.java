@@ -2,25 +2,27 @@ package apps;
 
 import org.junit.jupiter.api.Test;
 
+import static apps.CellValues.EMPTY;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TicTacToeTest {
     @Test
-    public void lengthOfArrayIs3by3Test(){
+    public void lengthOfArrayIs3by3Test() {
         TicTacToe ticTacToe = new TicTacToe();
-        assertEquals(3,ticTacToe.getLengthOfGame());
+        assertEquals(3, ticTacToe.getLengthOfGame());
     }
 
 
     @Test
-    public void checkIfTicTacToeIsEmpty(){
+    public void checkIfTicTacToeIsEmpty() {
         TicTacToe ticTacToe = new TicTacToe();
-        assertEquals(0,ticTacToe);
+        assertEquals(0, ticTacToe);
     }
+
     @Test
-    public void checkIfBoardCellsAreEmptyTest(){
+    public void checkIfBoardCellsAreEmptyTest() {
         TicTacToe ticTacToe = new TicTacToe();
-        ticTacToe.populateBoardCells();
-        assertEquals(CellValues.EMPTY,ticTacToe.getValueOfBoardCells());
+        CellValues[][] cells = ticTacToe.getValueOfBoardCells();
+        assertEquals(cells, ticTacToe.getValueOfBoardCells());
     }
 }

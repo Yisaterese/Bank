@@ -31,16 +31,8 @@ public class TicTacToe {
         }
     }
 
-    public CellValues[] getValueOfBoardCells() {
-       CellValues[] newCellValues = new CellValues[boardCells.length];
-       int counter = 0;
-       for(int row = 0; row < boardCells.length; row++){
-           for (int col = 0; col < boardCells[row].length; col++){
-              newCellValues[counter]= boardCells[row][col];
-              counter++;
-           }
-       }
-        return newCellValues;
+    public CellValues[][] getValueOfBoardCells() {
+        return boardCells;
     }
 
 }
