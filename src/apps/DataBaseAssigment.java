@@ -27,4 +27,25 @@ public class DataBaseAssigment {
             - This is because the primary key value is used to identify individual rows in relation and if the primary key has a null value, then we can't identify those rows.""" ;
 
 
+
+
+
+ public void  anormaly(){
+   String insertTionAnormaly = """
+           An insertion anormaly occurs when you are unable top add to the database without having some other related data
+           - it mostly happen in tables that have relationship with other tables.
+           e.g. Suppose you have a table that tracks courses and instructors. If you can't add a new course until you also assign an instructor, this is an insertion anomaly.
+                       This situation makes it difficult to insert data without providing information about another entity (instructor).
+   """;
+
+   String updateAnormaly = """
+           - An update anormaly occurs when you have data redundancy, and updating one instance of data leads to inconsistencies.
+           e.g . Consider a table where you store employee details along with their department.if an employee changes departments, updating only the employee's record without updating the corresponding department record can lead to inconsistencies.""";
+   String deleteAnormaly = """
+           -A delete anormaly happens  when you delete a data unintentionally that leads to the loss of other  related data that you may want to keep
+           e.g In a database where student information is stored with the courses they have taken, deleting a student's record might also delete information about courses that no other students have taken, leading to a loss of data.
+               """;
+ }
+
 }
+
