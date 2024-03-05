@@ -1,6 +1,16 @@
-package apps;
+package MenstrualApp;
 
-public class MenstrualCycleTracker {
+public class
+
+
+
+
+
+
+
+
+
+MenstrualCycleTracker {
     public static void main(String[] args) {
         MenstrualCycleTrackingApp tracker = new MenstrualCycleTrackingApp();
 

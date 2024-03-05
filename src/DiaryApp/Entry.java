@@ -1,4 +1,4 @@
-package apps;
+package DiaryApp;
 
 public class Entry {
     private int id = 0;

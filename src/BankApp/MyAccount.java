@@ -1,4 +1,6 @@
-package apps;
+package BankApp;
+
+import apps.InvalidPinException;
 
 public class MyAccount {
         private int accountNumber= 0;

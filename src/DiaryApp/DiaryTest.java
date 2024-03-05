@@ -1,5 +1,7 @@
-package apps;
+package DiaryApp;
 
+import apps.InvalidIdException;
+import apps.InvalidPinException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

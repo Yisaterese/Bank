@@ -1,4 +1,7 @@
-package apps;
+package DiaryApp;
+
+import apps.InvalidIdException;
+import apps.InvalidPinException;
 
 import java.util.ArrayList;
 

@@ -1,5 +1,6 @@
-package apps;
+package BankApp;
 
+import apps.InvalidPinException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

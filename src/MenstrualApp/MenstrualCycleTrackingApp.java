@@ -1,4 +1,4 @@
-package apps;
+package MenstrualApp;
 
 import java.util.Scanner;
 import java.time.LocalDate;

@@ -1,4 +1,8 @@
-package apps;
+package BankApp;
+
+import BankApp.InvalidAccountException;
+import BankApp.InvalidAmountException;
+import apps.InvalidPinException;
 
 import javax.naming.InsufficientResourcesException;
 import java.math.BigDecimal;
@@ -14,7 +18,7 @@ public class Account {
         this.balance = new BigDecimal("0");
     }
 
-   public void deposit(BigDecimal depositAmount)throws InvalidAmountException{
+   public void deposit(BigDecimal depositAmount)throws InvalidAmountException {
        if(depositAmount.compareTo(depositAmount.ZERO) <= 0 ){
            throw new InvalidAmountException("deposit amount must be greater than zero");
        }

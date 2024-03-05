@@ -1,4 +1,6 @@
-package apps;
+package BankApp;
+
+import apps.InvalidPinException;
 
 import java.util.ArrayList;
 

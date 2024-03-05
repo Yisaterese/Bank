@@ -1,5 +1,6 @@
-package apps;
+package MenstrualApp;
 
+import MenstrualApp.MenstrualCycleTrackingApp;
 import org.junit.jupiter.api.Test;
 
 class MenstrualCycleTrackingAppTest {
