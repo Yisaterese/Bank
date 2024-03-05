@@ -40,27 +40,31 @@ public class TicTacToe {
     }
 
     public void pickCell(int selectCell) {
-        CellValues cellValues = CellValues.X;
-        int row = (selectCell-1)/3;
-        int col = (selectCell -1)% 3;
+        isValidCell( selectCell);
 
-        boardCells[row][col] = cellValues;
-        isValidMove(row, col);
+    }
+
+    private void  isValidCell(int cell){
+        CellValues cellValues = CellValues.X;
+        int row = (cell-1)/3;
+        int col = (cell -1)% 3;
+
         if(cellValues == CellValues.X){
             cellValues  = CellValues.O;
         }else{
             cellValues = CellValues.X;
         }
-
-
+        if(cell >= 1 && cell <= 9){
+            boardCells[row][col] = cellValues;
+        }
     }
 
     private boolean isValidMove(int row, int col) {
         return boardCells[row][col].equals(CellValues.EMPTY);
     }
     public boolean hasWonByRow() {
-        for (int row = 0; row < boardCells.length; row++) {
-            boolean isWonByRow = boardCells[row][0] == boardCells[row][1] && boardCells[row][1] == boardCells[row][2];
+        for (CellValues[] boardCell : boardCells) {
+            boolean isWonByRow = boardCell[0] == boardCell[1] && boardCell[1] == boardCell[2];
             if (isWonByRow) {
                 return true;
             }

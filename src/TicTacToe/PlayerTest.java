@@ -9,7 +9,7 @@ public class PlayerTest {
     @Test
     public void checkIfMoveIsNotValid_throwIndexOutOfBoundException() {
         Player player = new Player("Okpe");
-        assertThrows(IndexOutOfBoundsException.class, () -> player.makeAMove(3,4, CellValues.X));
+        assertThrows(IndexOutOfBoundsException.class, () -> player.makeAMove(10));
     }
 
     @Test
