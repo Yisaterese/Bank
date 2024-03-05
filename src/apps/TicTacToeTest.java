@@ -61,15 +61,14 @@ public class TicTacToeTest {
 
     }
 
-
     @Test
     public void checkWinDiagonalyOnCellBoard_getWin(){
         TicTacToe ticTacToe = new TicTacToe();
-        ticTacToe.pickCell(1,0, X);
-        ticTacToe.pickCell(2,0, CellValues.O);
+        ticTacToe.pickCell(0,0, CellValues.O);
         ticTacToe.pickCell(1,1, X);
-        ticTacToe.pickCell(2,1, CellValues.O);
-        ticTacToe.pickCell(1,2, X);
+        ticTacToe.pickCell(1,1, CellValues.O);
+        ticTacToe.pickCell(2,0, X);
+        ticTacToe.pickCell(2,2, CellValues.O);
         assertTrue(ticTacToe.hasWonByDiagonal());
 
     }

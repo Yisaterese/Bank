@@ -77,7 +77,8 @@ public class TicTacToe {
 
     public boolean hasWonByDiagonal() {
         for(int index = 0; index < boardCells.length; index++){
-            if(boardCells[0][2] == boardCells[1][1] && boardCells[1][1] == boardCells[2][0])
+            boolean isWonDiagonaly = boardCells[0][2] == boardCells[1][1] && boardCells[1][1] == boardCells[2][0] || boardCells[0][0] == boardCells[1][1] && boardCells[1][1] == boardCells[2][2];
+            if(isWonDiagonaly)
                 return true;
         }
         return false;
