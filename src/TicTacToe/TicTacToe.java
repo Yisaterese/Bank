@@ -39,13 +39,20 @@ public class TicTacToe {
         return boardCells;
     }
 
-    public void pickCell(int row, int col, CellValues cellValues) {
+    public void pickCell(int selectCell) {
+        CellValues cellValues = CellValues.X;
+        int row = (selectCell-1)/3;
+        int col = (selectCell -1)% 3;
+
         boardCells[row][col] = cellValues;
-        if (!isValidRowAndColumn(row, col, cellValues)) {
-            throw new IndexOutOfBoundsException("index out of bound");
+        isValidMove(row, col);
+        if(cellValues == CellValues.X){
+            cellValues  = CellValues.O;
+        }else{
+            cellValues = CellValues.X;
         }
-        if(!isValidMove(row, col)) throw new InvalidMoveException("Make a valid move");
-        boardCells[row][col] = cellValues;
+
+
     }
 
     private boolean isValidMove(int row, int col) {

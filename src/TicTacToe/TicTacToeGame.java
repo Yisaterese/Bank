@@ -16,14 +16,14 @@ public class TicTacToeGame {
         System.out.println(currentPlayer.getName() + " make a move");
         int row = input.nextInt();
         int col = input.nextInt();
-        currentPlayer.makeAMove(row, col, CellValues);
+        currentPlayer.makeAMove(row, col, CellValues.X);
         game.displayBoardCells();
 
         boolean hasWon = game.hasWonByColumn() || game.hasWonByRow() || game.hasWonByDiagonal();
         while (!hasWon) {
-            if (hasWon)
-                System.out.println(currentPlayer.getName() + "has won");
-            break;
+            if (hasWon) {System.out.println(currentPlayer.getName() + "has won");
+                break;
+            }
             if (currentPlayer == playerX) currentPlayer = playerO;
             if (currentPlayer == playerO) currentPlayer = playerX;
         }
