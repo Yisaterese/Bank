@@ -10,67 +10,79 @@ public class TicTacToeGame {
         Player playerX = new Player("X");
         Player playerO = new Player("O");
         Player currentPlayer = new Player("CurrentPlayer");
-        currentPlayer =  playerX;
-        currentPlayer.makeAMove();
+        currentPlayer = playerX;
+
+
+        System.out.println(currentPlayer.getName() + " make a move");
+        int row = input.nextInt();
+        int col = input.nextInt();
+        currentPlayer.makeAMove(row, col, CellValues.valueOf());
         game.displayBoardCells();
 
-
-
+        boolean hasWon = game.hasWonByColumn() || game.hasWonByRow() || game.hasWonByDiagonal();
+        while (!hasWon) {
+            if (hasWon)
+                System.out.println(currentPlayer.getName() + "has won");
+            break;
+            if (currentPlayer == playerX) currentPlayer = playerO;
+            if (currentPlayer == playerO) currentPlayer = playerX;
+        }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-     game.displayBoardCells();
-        System.out.println("""
-
-                """);
-        game.pickCell(0, 0, CellValues.X);
-        game.displayBoardCells();
-        System.out.println("""
-
-                """);
-        game.pickCell(1, 0, CellValues.O);
-        System.out.println("""
-
-                """);
-        game.displayBoardCells();
-        game.pickCell(0, 1, CellValues.X);
-        System.out.println("""
-
-                """);
-        game.displayBoardCells();
-        game.pickCell(1, 1, CellValues.O);
-        System.out.println("""
-
-                """);
-        game.displayBoardCells();
-        game.pickCell(0, 2, CellValues.X);
-        System.out.println("""
-
-                """);
-        game.displayBoardCells();
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//
+//     game.displayBoardCells();
+//        System.out.println("""
+//
+//                """);
+//        game.pickCell(0, 0, CellValues.X);
+//        game.displayBoardCells();
+//        System.out.println("""
+//
+//                """);
+//        game.pickCell(1, 0, CellValues.O);
+//        System.out.println("""
+//
+//                """);
+//        game.displayBoardCells();
+//        game.pickCell(0, 1, CellValues.X);
+//        System.out.println("""
+//
+//                """);
+//        game.displayBoardCells();
+//        game.pickCell(1, 1, CellValues.O);
+//        System.out.println("""
+//
+//                """);
+//        game.displayBoardCells();
+//        game.pickCell(0, 2, CellValues.X);
+//        System.out.println("""
+//
+//                """);
+//        game.displayBoardCells();
+//
+//}
