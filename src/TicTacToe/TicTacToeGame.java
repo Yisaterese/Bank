@@ -16,7 +16,7 @@ public class TicTacToeGame {
         System.out.println(currentPlayer.getName() + " make a move");
         int row = input.nextInt();
         int col = input.nextInt();
-        currentPlayer.makeAMove(row, col, CellValues.valueOf());
+        currentPlayer.makeAMove(row, col, CellValues);
         game.displayBoardCells();
 
         boolean hasWon = game.hasWonByColumn() || game.hasWonByRow() || game.hasWonByDiagonal();

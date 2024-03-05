@@ -46,13 +46,11 @@ public class TicTacToe {
         }
         if(!isValidMove(row, col)) throw new InvalidMoveException("Make a valid move");
         boardCells[row][col] = cellValues;
-
     }
 
     private boolean isValidMove(int row, int col) {
         return boardCells[row][col].equals(CellValues.EMPTY);
     }
-
     public boolean hasWonByRow() {
         for (int row = 0; row < boardCells.length; row++) {
             boolean isWonByRow = boardCells[row][0] == boardCells[row][1] && boardCells[row][1] == boardCells[row][2];
