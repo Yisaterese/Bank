@@ -13,4 +13,7 @@ public class Player {
         TicTacToe ticTacToe = new TicTacToe();
         ticTacToe.pickCell(row,col,cellValues);
     }
+    public String getName(){
+        return name;
+    }
 }
