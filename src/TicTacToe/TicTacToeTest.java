@@ -42,7 +42,7 @@ public class TicTacToeTest {
         ticTacToe.pickCell(5, CellValues.X);
         ticTacToe.pickCell(3, CellValues.O);
         ticTacToe.pickCell(9, CellValues.X);
-        assertTrue(ticTacToe.isWinByDiagonal());
+        assertEquals(CellValues.X,ticTacToe.isWinByDiagonal());
 
     }
 
@@ -68,7 +68,7 @@ public class TicTacToeTest {
         ticTacToe.pickCell(5, CellValues.O);
         ticTacToe.pickCell(9, CellValues.X);
         ticTacToe.pickCell(6, CellValues.O);
-        assertTrue(ticTacToe.isWinByRow());
+        assertEquals(CellValues.O,ticTacToe.isWinByRow());
     }
 
     @Test

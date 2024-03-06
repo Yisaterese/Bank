@@ -71,14 +71,14 @@ public class TicTacToe {
         return boardCells[row][col].equals(CellValues.EMPTY);
     }
 
-    public boolean isWinByRow() {
-        for (CellValues[] boardCell : boardCells) {
-            boolean isWonByRow = boardCell[0] == boardCell[1] && boardCell[1] == boardCell[2];
-            if (isWonByRow) {
-                return true;
+    public CellValues isWinByRow() {
+            boolean isWinByFirstRow = boardCells[0][0] == boardCells[0][1] && boardCells[0][1] == boardCells[0][2];
+            boolean isWinBySecondRow = boardCells[1][0] == boardCells[1][1] && boardCells[1][1] == boardCells[1][2];
+            boolean isWinByThirdRow = boardCells[2][0] == boardCells[2][1] && boardCells[2][1] == boardCells[2][2];
+            if (isWinByFirstRow || isWinBySecondRow || isWinByThirdRow) {
+                return CellValues.X;
             }
-        }
-        return false;
+        return CellValues.O;
     }
 
     //
@@ -115,13 +115,13 @@ public class TicTacToe {
         return CellValues.O;
     }
 
-    public boolean isWinByDiagonal() {
+    public CellValues isWinByDiagonal() {
         for (int index = 0; index < boardCells.length; index++) {
             boolean isWonDiagonaly = boardCells[0][2] == boardCells[1][1] && boardCells[1][1] == boardCells[2][0] || boardCells[0][0] == boardCells[1][1] && boardCells[1][1] == boardCells[2][2];
             if (isWonDiagonaly)
-                return true;
+                return CellValues.X;
         }
-        return false;
+        return CellValues.O;
     }
 
 //    public boolean isADrawGame() {
