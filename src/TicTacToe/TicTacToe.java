@@ -106,15 +106,12 @@ public class TicTacToe {
 
 
     public CellValues isWinByColumn() {
-        for (int col = 0; col < boardCells.length; col++) {
             boolean isWonByFirstColumn = boardCells[0][0] == boardCells[1][0] && boardCells[1][0]  == boardCells[2][0];
             boolean isWonBySecondColumn = boardCells[0][1] == boardCells[1][1] && boardCells[1][1] == boardCells[2][1];
             boolean isWonByThirdColumn = boardCells[0][2] == boardCells[1][2] && boardCells[1][2] == boardCells[2][2];
-            System.out.println(boardCells[0][0] == boardCells[1][0] && boardCells[1][0]  == boardCells[2][0] );
             if (isWonByFirstColumn || isWonBySecondColumn || isWonByThirdColumn) {
                 return CellValues.X;
             }
-        }
         return CellValues.O;
     }
 
