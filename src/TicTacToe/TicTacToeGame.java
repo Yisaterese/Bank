@@ -1,6 +1,5 @@
 package TicTacToe;
 
-import apps.CellValues;
 public class TicTacToeGame {
     public static void main(String[] args) {
         java.util.Scanner input = new java.util.Scanner(System.in);
@@ -18,7 +17,7 @@ public class TicTacToeGame {
         currentPlayer.makeAMove(inputCell);
         game.displayBoardCells();
 
-        boolean hasWon = game.hasWonByColumn() || game.hasWonByRow() || game.hasWonByDiagonal();
+        boolean hasWon = game.isWinByColumn() || game.isWinByRow() || game.isWinByDiagonal();
         while (!hasWon) {
             if (hasWon) {System.out.println(currentPlayer.getName() + "has won");
                 break;

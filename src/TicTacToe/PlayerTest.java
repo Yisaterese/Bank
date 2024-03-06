@@ -13,9 +13,14 @@ public class PlayerTest {
     }
 
     @Test
-    public void checkIfMoveValid_placeMoveAtAnEmptyBoardCell(){
-        Player player = new Player("Chijioke");
-
+    public void checkWinner_playerXWon() {
+        TicTacToe ticTacToe = new TicTacToe();
+        ticTacToe.pickCell(1);
+        ticTacToe.pickCell(2);
+        ticTacToe.pickCell(5);
+        ticTacToe.pickCell(3);
+        ticTacToe.pickCell(9);
+//        assertEquals();
 
     }
 }

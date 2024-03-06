@@ -1,7 +1,9 @@
 package TicTacToe;
 
-import InvalidMoveException.InvalidMoveException;
+import InvalidBoardCellException.InvalidBoardCellException;
 import apps.CellValues;
+
+import java.util.Arrays;
 
 public class TicTacToe {
     private final CellValues[][] boardCells = new CellValues[3][3];
@@ -11,10 +13,8 @@ public class TicTacToe {
     }
 
     public void populateBoardCells() {
-        for (int row = 0; row < boardCells.length; row++) {
-            for (int col = 0; col < boardCells[row].length; col++) {
-                boardCells[row][col] = CellValues.EMPTY;
-            }
+        for (CellValues[] boardCell : boardCells) {
+            Arrays.fill(boardCell, CellValues.EMPTY);
         }
     }
 
@@ -39,30 +39,35 @@ public class TicTacToe {
         return boardCells;
     }
 
-    public void pickCell(int selectCell) {
-        isValidCell( selectCell);
+    public void pickCell(int selectCell, CellValues cellValues) {
+        validateBoardCellRange( selectCell);
+        isEmptyCellOnBoard(selectCell, cellValues);
+
 
     }
 
-    private void  isValidCell(int cell){
-        CellValues cellValues = CellValues.X;
-        int row = (cell-1)/3;
-        int col = (cell -1)% 3;
-
-        if(cellValues == CellValues.X){
-            cellValues  = CellValues.O;
-        }else{
-            cellValues = CellValues.X;
-        }
-        if(cell >= 1 && cell <= 9){
+    private void validateBoardCellRange(int inputCell){
+        if(inputCell >= 1 && inputCell <= 9)return;
+        throw new IndexOutOfBoundsException("input cells should be between 1 and 9.");
+    }
+    private boolean isEmptyCellOnBoard(int inputCell, CellValues cellValues)  {
+        int row = (inputCell-1)/3;
+        int col = (inputCell -1)% 3;
+        if(boardCells[row][col] == CellValues.EMPTY)
             boardCells[row][col] = cellValues;
-        }
+        throw new InvalidBoardCellException("Board cell is already picked");
+    }
+
+    private void validatePlayerTurn(CellValues cellValues){
+        if(cellValues == CellValues.X)
+            cellValues  = CellValues.O;
+        cellValues = CellValues.X;
     }
 
     private boolean isValidMove(int row, int col) {
         return boardCells[row][col].equals(CellValues.EMPTY);
     }
-    public boolean hasWonByRow() {
+    public boolean isWinByRow() {
         for (CellValues[] boardCell : boardCells) {
             boolean isWonByRow = boardCell[0] == boardCell[1] && boardCell[1] == boardCell[2];
             if (isWonByRow) {
@@ -95,7 +100,7 @@ public class TicTacToe {
     }
 
 
-    public boolean hasWonByColumn() {
+    public boolean isWinByColumn() {
         for (int col = 0; col < boardCells.length; col++) {
             boolean isWonByColumn =boardCells[col][0] == boardCells[col][1] && boardCells[col][1] == boardCells[col][2];
             if (isWonByColumn) {
@@ -105,12 +110,19 @@ public class TicTacToe {
         return false;
     }
 
-    public boolean hasWonByDiagonal() {
+    public boolean isWinByDiagonal() {
         for(int index = 0; index < boardCells.length; index++){
             boolean isWonDiagonaly = boardCells[0][2] == boardCells[1][1] && boardCells[1][1] == boardCells[2][0] || boardCells[0][0] == boardCells[1][1] && boardCells[1][1] == boardCells[2][2];
             if(isWonDiagonaly)
                 return true;
         }
         return false;
+    }
+
+    public boolean isADrawGame() {
+        if(!isWinByColumn() && isWinByDiagonal() && isWinByRow()){
+            return false;
+        }
+        return true;
     }
 }
