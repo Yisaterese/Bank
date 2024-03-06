@@ -7,35 +7,36 @@ public class TicTacToeGame {
         java.util.Scanner input = new java.util.Scanner(System.in);
 
         TicTacToe game = new TicTacToe();
-
         Player playerX = new Player("X");
         Player playerO = new Player("O");
         Player currentPlayer = new Player("CurrentPlayer");
         currentPlayer = playerX;
 
 
-        System.out.println(currentPlayer.getName() + " make a move");
+        System.out.println("Player "+currentPlayer.getName() + " make a move");
         int inputCell = input.nextInt();
         CellValues cellValues = CellValues.X;
-        currentPlayer.makeAMove(inputCell,cellValues );
+        currentPlayer.makeAMove(inputCell, cellValues);
         game.displayBoardCells();
-
-        boolean hasWon = game.isWinByColumn() || game.isWinByRow() || game.isWinByDiagonal();
-        while (!hasWon) {
-            if (hasWon) {System.out.println(currentPlayer.getName() + "has won");
-                break;
-            }
-            if (currentPlayer == playerX) currentPlayer = playerO;
-            if (currentPlayer == playerO) currentPlayer = playerX;
-        }
     }
 }
 
-
-
-
-
-
+//        boolean hasWon = game.isWinByColumn() || game.isWinByRow() || game.isWinByDiagonal();
+//        while (!hasWon) {
+//            if (hasWon) {System.out.println(currentPlayer.getName() + "has won");
+//                break;
+//            }
+//            if (currentPlayer == playerX) currentPlayer = playerO;
+//            if (currentPlayer == playerO) currentPlayer = playerX;
+//        }
+//    }
+//}
+//
+//
+//
+//
+//
+//
 
 
 

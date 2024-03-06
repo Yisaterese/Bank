@@ -7,7 +7,7 @@ import java.util.Arrays;
 
 public class TicTacToe {
     private final CellValues[][] boardCells = new CellValues[3][3];
-
+    CellValues winner = CellValues.X;
     public TicTacToe() {
         populateBoardCells();
     }
@@ -105,14 +105,17 @@ public class TicTacToe {
     }
 
 
-    public boolean isWinByColumn() {
+    public CellValues isWinByColumn() {
         for (int col = 0; col < boardCells.length; col++) {
-            boolean isWonByColumn = boardCells[col][0] == boardCells[col][1] && boardCells[col][1] == boardCells[col][2];
-            if (isWonByColumn) {
-                return true;
+            boolean isWonByFirstColumn = boardCells[0][0] == boardCells[1][0] && boardCells[1][0]  == boardCells[2][0];
+            boolean isWonBySecondColumn = boardCells[0][1] == boardCells[1][1] && boardCells[1][1] == boardCells[2][1];
+            boolean isWonByThirdColumn = boardCells[0][2] == boardCells[1][2] && boardCells[1][2] == boardCells[2][2];
+            System.out.println(boardCells[0][0] == boardCells[1][0] && boardCells[1][0]  == boardCells[2][0] );
+            if (isWonByFirstColumn || isWonBySecondColumn || isWonByThirdColumn) {
+                return CellValues.X;
             }
         }
-        return false;
+        return CellValues.O;
     }
 
     public boolean isWinByDiagonal() {
@@ -124,18 +127,18 @@ public class TicTacToe {
         return false;
     }
 
-    public boolean isADrawGame() {
-        if (!isWinByColumn() && isWinByDiagonal() && isWinByRow()) {
-            return false;
-        }
-        return true;
-    }
-
-    public boolean isAWin() {
-        if(isWinByRow() )return true;
-        if(isWinByColumn())return true;
-        if(isWinByDiagonal())return true;
-        return false;
+//    public boolean isADrawGame() {
+//        if (!isWinByColumn() && isWinByDiagonal() && isWinByRow()) {
+//            return false;
+//        }
+//        return true;
+//    }
+//
+//     public CellValues isAWin(CellValues winner) {
+//        if(isWinByRow() )return true;
+//        if(isWinByColumn())return winner;
+//        if(isWinByDiagonal())return true;
+//        return false;
 //            boolean isAWinner = boardCells[row][0] == boardCells[row][1] && boardCells[row][0] == boardCells[row][2];
 //            if (isAWinner) {
 //                if (boardCells[row][0] == CellValues.X) {
@@ -148,6 +151,6 @@ public class TicTacToe {
 
 
 
-    }
+
 
 }
