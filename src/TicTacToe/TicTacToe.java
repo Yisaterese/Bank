@@ -41,7 +41,8 @@ public class TicTacToe {
 
     public void pickCell(int selectCell, CellValues cellValues) {
         validateBoardCellRange( selectCell);
-        isEmptyCellOnBoard(selectCell, cellValues);
+        validateEmptyCellOnBoard(selectCell, cellValues);
+        validatePlayerTurn(cellValues);
 
 
     }
@@ -50,12 +51,14 @@ public class TicTacToe {
         if(inputCell >= 1 && inputCell <= 9)return;
         throw new IndexOutOfBoundsException("input cells should be between 1 and 9.");
     }
-    private boolean isEmptyCellOnBoard(int inputCell, CellValues cellValues)  {
+    private void validateEmptyCellOnBoard(int inputCell, CellValues cellValues)  {
         int row = (inputCell-1)/3;
         int col = (inputCell -1)% 3;
-        if(boardCells[row][col] == CellValues.EMPTY)
+        if (boardCells[row][col] == CellValues.EMPTY) {
             boardCells[row][col] = cellValues;
-        throw new InvalidBoardCellException("Board cell is already picked");
+        }else {
+            throw new InvalidBoardCellException("Board cell is already picked");
+        }
     }
 
     private void validatePlayerTurn(CellValues cellValues){
