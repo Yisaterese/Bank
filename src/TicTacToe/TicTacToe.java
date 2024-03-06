@@ -40,36 +40,37 @@ public class TicTacToe {
     }
 
     public void pickCell(int selectCell, CellValues cellValues) {
-        validateBoardCellRange( selectCell);
+        validateBoardCellRange(selectCell);
         validateEmptyCellOnBoard(selectCell, cellValues);
-        validatePlayerTurn(cellValues);
 
 
     }
 
-    private void validateBoardCellRange(int inputCell){
-        if(inputCell >= 1 && inputCell <= 9)return;
+    private void validateBoardCellRange(int inputCell) {
+        if (inputCell >= 1 && inputCell <= 9) return;
         throw new IndexOutOfBoundsException("input cells should be between 1 and 9.");
     }
-    private void validateEmptyCellOnBoard(int inputCell, CellValues cellValues)  {
-        int row = (inputCell-1)/3;
-        int col = (inputCell -1)% 3;
+
+    private void validateEmptyCellOnBoard(int inputCell, CellValues cellValues) {
+        int row = (inputCell - 1) / 3;
+        int col = (inputCell - 1) % 3;
         if (boardCells[row][col] == CellValues.EMPTY) {
             boardCells[row][col] = cellValues;
-        }else {
+        } else {
             throw new InvalidBoardCellException("Board cell is already picked");
         }
     }
 
-    private void validatePlayerTurn(CellValues cellValues){
-        if(cellValues == CellValues.X)
-            cellValues  = CellValues.O;
+    private void validatePlayerTurn(CellValues cellValues) {
+        if (cellValues == CellValues.X)
+            cellValues = CellValues.O;
         cellValues = CellValues.X;
     }
 
     private boolean isValidMove(int row, int col) {
         return boardCells[row][col].equals(CellValues.EMPTY);
     }
+
     public boolean isWinByRow() {
         for (CellValues[] boardCell : boardCells) {
             boolean isWonByRow = boardCell[0] == boardCell[1] && boardCell[1] == boardCell[2];
@@ -79,7 +80,8 @@ public class TicTacToe {
         }
         return false;
     }
-//
+
+    //
 //        CellValues[][] newBoardCells = new CellValues[boardCells.length][boardCells.length];
 //        int counter = 0;
 //        for (int row = 0; row < boardCells.length; row++) {
@@ -105,7 +107,7 @@ public class TicTacToe {
 
     public boolean isWinByColumn() {
         for (int col = 0; col < boardCells.length; col++) {
-            boolean isWonByColumn =boardCells[col][0] == boardCells[col][1] && boardCells[col][1] == boardCells[col][2];
+            boolean isWonByColumn = boardCells[col][0] == boardCells[col][1] && boardCells[col][1] == boardCells[col][2];
             if (isWonByColumn) {
                 return true;
             }
@@ -114,18 +116,38 @@ public class TicTacToe {
     }
 
     public boolean isWinByDiagonal() {
-        for(int index = 0; index < boardCells.length; index++){
+        for (int index = 0; index < boardCells.length; index++) {
             boolean isWonDiagonaly = boardCells[0][2] == boardCells[1][1] && boardCells[1][1] == boardCells[2][0] || boardCells[0][0] == boardCells[1][1] && boardCells[1][1] == boardCells[2][2];
-            if(isWonDiagonaly)
+            if (isWonDiagonaly)
                 return true;
         }
         return false;
     }
 
     public boolean isADrawGame() {
-        if(!isWinByColumn() && isWinByDiagonal() && isWinByRow()){
+        if (!isWinByColumn() && isWinByDiagonal() && isWinByRow()) {
             return false;
         }
         return true;
     }
+
+    public boolean isAWin() {
+        if(isWinByRow() )return true;
+        if(isWinByColumn())return true;
+        if(isWinByDiagonal())return true;
+        return false;
+//            boolean isAWinner = boardCells[row][0] == boardCells[row][1] && boardCells[row][0] == boardCells[row][2];
+//            if (isAWinner) {
+//                if (boardCells[row][0] == CellValues.X) {
+//                    return CellValues.X;
+//                } else {
+//                    return CellValues.O;
+//                }
+//            }
+//
+
+
+
+    }
+
 }

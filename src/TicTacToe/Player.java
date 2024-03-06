@@ -9,9 +9,9 @@ public class Player {
         this.name = name;
     }
 
-    public void makeAMove(int pickACell){
+    public void makeAMove(int pickACell, CellValues cellValues){
         TicTacToe ticTacToe = new TicTacToe();
-        ticTacToe.pickCell(pickACell);
+        ticTacToe.pickCell(pickACell, cellValues);
     }
     public String getName(){
         return name;
