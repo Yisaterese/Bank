@@ -1,0 +1,19 @@
+package Delivery;
+
+import InvalidNumberOfDelivery.InvalidNumberOfDelivery;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+public class DispatchRiderTest {
+    @Test
+    public void ridersSuccessfulDeliveryIs80_wageIs45000(){
+        assertEquals(45000, DispatchRider.calculateRidersWage(80));
+    }
+
+    @Test
+    public void ridersSuccessfulDeliveryIsAboveRange_throwInvalidNumberOfDelivery(){
+        assertThrows(InvalidNumberOfDelivery.class, () ->  DispatchRider.calculateRidersWage(80));
+    }
+}
