@@ -1,6 +1,6 @@
 package Delivery;
 
-import InvalidNumberOfDelivery.InvalidNumberOfDelivery;
+import InvalidNumberOfDelivery.InvalidNumberOfDeliveryException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -14,10 +14,12 @@ public class DispatchRiderTest {
 
     @Test
     public void ridersSuccessfulDeliveryIsAboveRange_throwInvalidNumberOfDelivery(){
-        assertThrows(InvalidNumberOfDelivery.class, () ->  DispatchRider.calculateRidersWage(122));
+        DispatchRider dispatchRider = new DispatchRider();
+        assertThrows(InvalidNumberOfDeliveryException.class, () ->  DispatchRider.calculateRidersWage(122));
     }
     @Test
     public void ridersSuccessfulDeliveryIs25_wageIs9000(){
+        DispatchRider dispatchRider = new DispatchRider();
         assertEquals(9000, DispatchRider.calculateRidersWage(25));
     }
 }
