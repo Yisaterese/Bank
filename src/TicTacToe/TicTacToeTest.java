@@ -63,12 +63,14 @@ public class TicTacToeTest {
     public void checkWinByRow_getWinTest(){
         TicTacToe ticTacToe = new TicTacToe();
         ticTacToe.pickCell(1, CellValues.X);
-        ticTacToe.pickCell(4, CellValues.O);
-        ticTacToe.pickCell(2, CellValues.X);
-        ticTacToe.pickCell(5, CellValues.O);
-        ticTacToe.pickCell(9, CellValues.X);
-        ticTacToe.pickCell(6, CellValues.O);
+        ticTacToe.pickCell(7, CellValues.O);
+        ticTacToe.pickCell(4, CellValues.X);
+        ticTacToe.pickCell(8, CellValues.O);
+        ticTacToe.pickCell(3, CellValues.X);
+        ticTacToe.pickCell(9, CellValues.O);
+        ticTacToe.displayBoardCells();
         assertEquals(CellValues.O,ticTacToe.isWinByRow());
+
     }
 
     @Test
@@ -95,13 +97,14 @@ public class TicTacToeTest {
     @Test
     public void checkWin_getWin(){
         TicTacToe ticTacToe = new TicTacToe();
-        ticTacToe.pickCell(1, CellValues.X);
-        ticTacToe.pickCell(5, CellValues.O);
-        ticTacToe.pickCell(2, CellValues.X);
-        ticTacToe.pickCell(7, CellValues.O);
-        ticTacToe.pickCell(3, CellValues.X);
-        ticTacToe.pickCell(8, CellValues.O);
-        //assertTrue(ticTacToe.isAWin());
+        ticTacToe.pickCell(4, CellValues.X);
+        ticTacToe.pickCell(1, CellValues.O);
+        ticTacToe.pickCell(6, CellValues.X);
+        ticTacToe.pickCell(2, CellValues.O);
+        ticTacToe.pickCell(9, CellValues.X);
+        ticTacToe.pickCell(3, CellValues.O);
+        assertEquals(CellValues.O, ticTacToe.isAWin());
+        ticTacToe.displayBoardCells();
     }
 
 }

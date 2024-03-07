@@ -7,7 +7,7 @@ import java.util.Arrays;
 
 public class TicTacToe {
     private final CellValues[][] boardCells = new CellValues[3][3];
-    CellValues winner = CellValues.X;
+    CellValues cellValues = CellValues.X;
     public TicTacToe() {
         populateBoardCells();
     }
@@ -72,16 +72,22 @@ public class TicTacToe {
     }
 
     public CellValues isWinByRow() {
-            boolean isWinByFirstRow = boardCells[0][0] == boardCells[0][1] && boardCells[0][1] == boardCells[0][2];
-            boolean isWinBySecondRow = boardCells[1][0] == boardCells[1][1] && boardCells[1][1] == boardCells[1][2];
-            boolean isWinByThirdRow = boardCells[2][0] == boardCells[2][1] && boardCells[2][1] == boardCells[2][2];
-            if (isWinByFirstRow || isWinBySecondRow || isWinByThirdRow) {
-                return CellValues.X;
-            }
-        return CellValues.O;
-    }
+        boolean isWinByFirstRow = boardCells[0][0] == boardCells[0][1] && boardCells[0][1] == boardCells[0][2];
+        boolean isWinBySecondRow = boardCells[1][0] == boardCells[1][1] && boardCells[1][1] == boardCells[1][2];
+        boolean isWinByThirdRow = boardCells[2][0] == boardCells[2][1] && boardCells[2][1] == boardCells[2][2];
+        System.out.println(boardCells[1][0] == boardCells[1][1] && boardCells[1][1] == boardCells[1][2]);
+        if (isWinByFirstRow) {
+            return boardCells[0][0];
+        } else if (isWinBySecondRow) {
+            return boardCells[1][0];
+        } else if (isWinByThirdRow) {
+            return boardCells[2][0];
+        }
+        return CellValues.EMPTY;
 
-    //
+
+    }
+        //
 //        CellValues[][] newBoardCells = new CellValues[boardCells.length][boardCells.length];
 //        int counter = 0;
 //        for (int row = 0; row < boardCells.length; row++) {
@@ -93,16 +99,16 @@ public class TicTacToe {
 //            counter++;
 //        }
 //        return newBoardCells;
-//
-//
-//       }
-    private boolean isValidRowAndColumn(int row, int col, CellValues cellValues) {
-        if (row >= 0 && row <= 2 && col >= 0 && col <= 2) {
-            boardCells[row][col] = cellValues;
-            return true;
-        }
-        throw new IndexOutOfBoundsException("Out of bound index exception");
-    }
+
+
+
+//    private boolean isValidRowAndColumn(int row, int col, CellValues cellValues) {
+//        if (row >= 0 && row <= 2 && col >= 0 && col <= 2) {
+//            boardCells[row][col] = cellValues;
+//            return true;
+//        }
+//        throw new IndexOutOfBoundsException("Out of bound index exception");
+//    }
 
 
     public CellValues isWinByColumn() {
@@ -124,30 +130,20 @@ public class TicTacToe {
         return CellValues.O;
     }
 
-//    public boolean isADrawGame() {
-//        if (!isWinByColumn() && isWinByDiagonal() && isWinByRow()) {
-//            return false;
-//        }
-//        return true;
-//    }
-//
-//     public CellValues isAWin(CellValues winner) {
-//        if(isWinByRow() )return true;
-//        if(isWinByColumn())return winner;
-//        if(isWinByDiagonal())return true;
-//        return false;
-//            boolean isAWinner = boardCells[row][0] == boardCells[row][1] && boardCells[row][0] == boardCells[row][2];
-//            if (isAWinner) {
-//                if (boardCells[row][0] == CellValues.X) {
-//                    return CellValues.X;
-//                } else {
-//                    return CellValues.O;
-//                }
-//            }
-//
+    public CellValues[][] isADrawGame() {
+        return boardCells;
+    }
 
+     public CellValues isAWin() {
+         for (int row = 0; row < boardCells.length; row++) {
+             boolean isAWinner = boardCells[row][0] == boardCells[row][1] && boardCells[row][0] == boardCells[row][2];
+             if (isAWinner) {
+                 return CellValues.X;
 
-
-
-
+             }else{
+                 return CellValues.O;
+             }
+         }
+         return null;
+    }
 }
