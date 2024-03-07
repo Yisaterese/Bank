@@ -1,7 +1,7 @@
 package Delivery;
 
 
-import invalidNumberOfDelivery.invalidNumberOfDelivery;
+import InvalidNumberOfDelivery.InvalidNumberOfDelivery;
 
 public class DispatchRider {
     public static  int calculateRidersWage(int numberOfDelivery) {
@@ -14,7 +14,7 @@ public class DispatchRider {
         } else if (numberOfDelivery >= 70) {
             return numberOfDelivery * 500 + 5000;
         } else if (numberOfDelivery < 1 && numberOfDelivery > 100) {
-            throw new invalidNumberOfDelivery("number of delivery above range");
+           throw new InvalidNumberOfDelivery("number of delivery above range");
         }
         return 0;
     }
