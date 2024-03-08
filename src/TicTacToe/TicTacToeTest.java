@@ -23,7 +23,7 @@ public class TicTacToeTest {
     @Test
     public void checkForOutOfRangeBoardCell_throwIndexOutOfBoundTest(){
         TicTacToe ticTacToe = new TicTacToe();
-         assertThrows(IndexOutOfBoundsException.class,()->ticTacToe.pickCell(10, CellValues.X));
+         assertThrows(IndexOutOfBoundsException.class,()->ticTacToe.pickCell(11, CellValues.X));
     }
 
    @Test
@@ -84,7 +84,7 @@ public class TicTacToeTest {
         ticTacToe.pickCell(7, CellValues.O);
         ticTacToe.pickCell(3, CellValues.X);
         ticTacToe.pickCell(8, CellValues.O);
-        //assertTrue(ticTacToe.isADrawGame());
+        assertEquals(ticTacToe.getValueOfBoardCells(),ticTacToe.isADrawGame());
     }
 
     @Test
@@ -97,14 +97,15 @@ public class TicTacToeTest {
     @Test
     public void checkWin_getWin(){
         TicTacToe ticTacToe = new TicTacToe();
-        ticTacToe.pickCell(4, CellValues.X);
-        ticTacToe.pickCell(1, CellValues.O);
-        ticTacToe.pickCell(6, CellValues.X);
+        ticTacToe.pickCell(3, CellValues.X);
         ticTacToe.pickCell(2, CellValues.O);
-        ticTacToe.pickCell(9, CellValues.X);
-        ticTacToe.pickCell(3, CellValues.O);
-        assertEquals(CellValues.O, ticTacToe.isAWin());
+        ticTacToe.pickCell(4, CellValues.X);
+        ticTacToe.pickCell(5, CellValues.O);
+        ticTacToe.pickCell(7, CellValues.X);
+        ticTacToe.pickCell(8, CellValues.O);
         ticTacToe.displayBoardCells();
+        assertEquals(CellValues.O, ticTacToe.isAWin());
+
     }
 
 }

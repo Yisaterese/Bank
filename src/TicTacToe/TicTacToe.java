@@ -87,28 +87,6 @@ public class TicTacToe {
 
 
     }
-        //
-//        CellValues[][] newBoardCells = new CellValues[boardCells.length][boardCells.length];
-//        int counter = 0;
-//        for (int row = 0; row < boardCells.length; row++) {
-//            if (boardCells[row][0] == boardCells[row][1] && boardCells[row][1] == boardCells[row][2]) {
-//                for (int col = 0; col < boardCells[row].length; col++) {
-//                    newBoardCells[counter][col] = boardCells[row][col];
-//                }
-//            }
-//            counter++;
-//        }
-//        return newBoardCells;
-
-
-
-//    private boolean isValidRowAndColumn(int row, int col, CellValues cellValues) {
-//        if (row >= 0 && row <= 2 && col >= 0 && col <= 2) {
-//            boardCells[row][col] = cellValues;
-//            return true;
-//        }
-//        throw new IndexOutOfBoundsException("Out of bound index exception");
-//    }
 
 
     public CellValues isWinByColumn() {
@@ -135,15 +113,22 @@ public class TicTacToe {
     }
 
      public CellValues isAWin() {
-         for (int row = 0; row < boardCells.length; row++) {
-             boolean isAWinner = boardCells[row][0] == boardCells[row][1] && boardCells[row][0] == boardCells[row][2];
-             if (isAWinner) {
-                 return CellValues.X;
+         boolean isWonByFirstRow = boardCells[0][0] == boardCells[0][1] && boardCells[0][1]  == boardCells[0][2];
+         boolean isWonBySecondRow = boardCells[1][0] == boardCells[1][1] && boardCells[1][1] == boardCells[1][2];
+         boolean isWonByThirdRow = boardCells[2][0] == boardCells[2][1] && boardCells[2][1] == boardCells[2][2];
 
-             }else{
-                 return CellValues.O;
-             }
+         boolean isWonByFirstColumn = boardCells[0][0] == boardCells[1][0] && boardCells[1][0]  == boardCells[2][0];
+         boolean isWonBySecondColumn = boardCells[0][1] == boardCells[1][1] && boardCells[1][1] == boardCells[2][1];
+         boolean isWonByThirdColumn = boardCells[0][2] == boardCells[1][2] && boardCells[1][2] == boardCells[2][2];
+
+         boolean isWonByRightDiagonal = boardCells[0][2] == boardCells[1][1] && boardCells[1][1]  == boardCells[2][0];
+         boolean isWonByLeftDiagonal = boardCells[0][0] == boardCells[1][1] && boardCells[1][1] == boardCells[2][2];
+
+         boolean isAWinByRowColumnOrDiagonal =  isWonByFirstRow || isWonBySecondRow || isWonByThirdRow || isWonByFirstColumn || isWonBySecondColumn || isWonByThirdColumn || isWonByLeftDiagonal || isWonByRightDiagonal;
+         System.out.println(isAWinByRowColumnOrDiagonal);
+         if (isAWinByRowColumnOrDiagonal) {
+             return CellValues.X;
          }
-         return null;
+         return CellValues.O;
     }
 }

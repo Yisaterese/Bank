@@ -14,12 +14,10 @@ public class DispatchRiderTest {
 
     @Test
     public void ridersSuccessfulDeliveryIsAboveRange_throwInvalidNumberOfDelivery(){
-        DispatchRider dispatchRider = new DispatchRider();
         assertThrows(InvalidNumberOfDeliveryException.class, () ->  DispatchRider.calculateRidersWage(122));
     }
     @Test
     public void ridersSuccessfulDeliveryIs25_wageIs9000(){
-        DispatchRider dispatchRider = new DispatchRider();
         assertEquals(9000, DispatchRider.calculateRidersWage(25));
     }
 }
