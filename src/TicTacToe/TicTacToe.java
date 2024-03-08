@@ -63,7 +63,7 @@ public class TicTacToe {
         if (boardCells[row][col] == CellValues.EMPTY) {
             boardCells[row][col] = cellValues;
         } else {
-            //throw new InvalidBoardCellException("Board cell is already picked");
+            throw new InvalidBoardCellException("Board cell is already picked");
         }
     }
 
