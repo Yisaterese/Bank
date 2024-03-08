@@ -1,6 +1,5 @@
 package TicTacToe;
 
-import TicTacToe.TicTacToe;
 import apps.CellValues;
 
 public class Player {
@@ -8,11 +7,13 @@ public class Player {
     public Player(String name){
         this.name = name;
     }
-
-    public void makeAMove(int pickACell, CellValues cellValues){
-        TicTacToe ticTacToe = new TicTacToe();
+    TicTacToe ticTacToe = new TicTacToe();
+    public boolean makeAMove(int pickACell, CellValues cellValues){
         ticTacToe.pickCell(pickACell, cellValues);
+        ticTacToe.isAWin();
+        return false;
     }
+
     public String getName(){
         return name;
     }

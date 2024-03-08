@@ -7,7 +7,6 @@ import java.util.Arrays;
 
 public class TicTacToe {
     private final CellValues[][] boardCells = new CellValues[3][3];
-    CellValues cellValues = CellValues.X;
     public TicTacToe() {
         populateBoardCells();
     }
@@ -23,7 +22,6 @@ public class TicTacToe {
     }
 
     public void displayBoardCells() {
-        System.out.println("Welcome to TIC TAC TOE game");
         System.out.println("------------------------");
         for (int row = 0; row < boardCells.length; row++) {
             System.out.print("|");
@@ -42,12 +40,20 @@ public class TicTacToe {
     public void pickCell(int selectCell, CellValues cellValues) {
         validateBoardCellRange(selectCell);
         validateEmptyCellOnBoard(selectCell, cellValues);
-
+        validatePlayerTurn(cellValues);
+        isAWin();
 
     }
+    public CellValues validatePlayerTurn(CellValues cellValues) {
+        if (cellValues == CellValues.X) {
+            return CellValues.X;
+        } else {
+            return CellValues.O;
+        }
+    }
 
-    private void validateBoardCellRange(int inputCell) {
-        if (inputCell >= 1 && inputCell <= 9) return;
+    public boolean validateBoardCellRange(int inputCell) {
+        if (inputCell >= 1 && inputCell <= 9) return false;
         throw new IndexOutOfBoundsException("input cells should be between 1 and 9.");
     }
 
@@ -57,15 +63,11 @@ public class TicTacToe {
         if (boardCells[row][col] == CellValues.EMPTY) {
             boardCells[row][col] = cellValues;
         } else {
-            throw new InvalidBoardCellException("Board cell is already picked");
+            //throw new InvalidBoardCellException("Board cell is already picked");
         }
     }
 
-    private void validatePlayerTurn(CellValues cellValues) {
-        if (cellValues == CellValues.X)
-            cellValues = CellValues.O;
-        cellValues = CellValues.X;
-    }
+
 
     private boolean isValidMove(int row, int col) {
         return boardCells[row][col].equals(CellValues.EMPTY);
@@ -75,7 +77,6 @@ public class TicTacToe {
         boolean isWinByFirstRow = boardCells[0][0] == boardCells[0][1] && boardCells[0][1] == boardCells[0][2];
         boolean isWinBySecondRow = boardCells[1][0] == boardCells[1][1] && boardCells[1][1] == boardCells[1][2];
         boolean isWinByThirdRow = boardCells[2][0] == boardCells[2][1] && boardCells[2][1] == boardCells[2][2];
-        System.out.println(boardCells[1][0] == boardCells[1][1] && boardCells[1][1] == boardCells[1][2]);
         if (isWinByFirstRow) {
             return boardCells[0][0];
         } else if (isWinBySecondRow) {

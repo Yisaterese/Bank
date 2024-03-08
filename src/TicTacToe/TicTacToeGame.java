@@ -6,21 +6,30 @@ public class TicTacToeGame {
     public static void main(String[] args) {
         java.util.Scanner input = new java.util.Scanner(System.in);
 
-        TicTacToe game = new TicTacToe();
+        TicTacToe ticTacGame = new TicTacToe();
         Player playerX = new Player("X");
         Player playerO = new Player("O");
         Player currentPlayer = new Player("CurrentPlayer");
         currentPlayer = playerX;
-
-
-        System.out.println("Player "+currentPlayer.getName() + " make a move");
-        int inputCell = input.nextInt();
         CellValues cellValues = CellValues.X;
-        currentPlayer.makeAMove(inputCell, cellValues);
-        game.displayBoardCells();
+        while(true) {
+            System.out.println("    GAME START");
+            System.out.println("Player " + ticTacGame.validatePlayerTurn(cellValues) + " make a move");
+            int inputCell = input.nextInt();
+            try {
+                ticTacGame.validateBoardCellRange(inputCell);
+            }catch (IndexOutOfBoundsException e){
+                ticTacGame.validateBoardCellRange(inputCell);
+            }
+
+            ticTacGame.pickCell(inputCell, CellValues.X);
+            currentPlayer.makeAMove(inputCell, cellValues);
+            ticTacGame.displayBoardCells();
+            System.out.println(currentPlayer.makeAMove(inputCell, cellValues));
+        }
     }
 }
-
+//
 //        boolean hasWon = game.isWinByColumn() || game.isWinByRow() || game.isWinByDiagonal();
 //        while (!hasWon) {
 //            if (hasWon) {System.out.println(currentPlayer.getName() + "has won");
@@ -31,18 +40,13 @@ public class TicTacToeGame {
 //        }
 //    }
 //}
+
 //
 //
 //
 //
 //
 //
-
-
-
-
-
-
 
 
 
