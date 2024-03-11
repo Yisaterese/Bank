@@ -19,15 +19,24 @@ public class Player {
     }
 
     public  static void validateInputCatchException() {
-        System.out.println("    GAME START");
-        System.out.println("Player " + ticTacToe.validatePlayerTurn(cellValues) + " make a move");
-        int inputCell = input.nextInt();
-        ticTacToe.validateBoardCellRange(inputCell);
-        ticTacToe.pickCell(inputCell, CellValues.X);
-        ticTacToe.displayBoardCells();
-    }
+        System.out.println("Player " + Player.validatePlayerTurn(cellValues) + " make a move");
+            int inputCell = input.nextInt();
+                ticTacToe.validateBoardCellRange(inputCell);
+                ticTacToe.pickCell(inputCell, CellValues.X);
+                ticTacToe.displayBoardCells();
+                ticTacToe.isAWin();
+        }
+
 
     public String getName(){
         return name;
+    }
+
+    public static CellValues validatePlayerTurn(CellValues cellValues) {
+        if (cellValues == CellValues.X) {
+            return CellValues.X;
+        } else {
+            return CellValues.O;
+        }
     }
 }

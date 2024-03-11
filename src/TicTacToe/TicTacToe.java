@@ -39,21 +39,18 @@ public class TicTacToe {
 
     public void pickCell(int selectCell, CellValues cellValues) {
         validateBoardCellRange(selectCell);
-        validateEmptyCellOnBoard(selectCell, cellValues);
-        validatePlayerTurn(cellValues);
+        try {
+            validateEmptyCellOnBoard(selectCell, cellValues);
+        }catch (IndexOutOfBoundsException e) {
+            validateEmptyCellOnBoard(selectCell, cellValues);
+        }
         isAWin();
 
     }
-    public CellValues validatePlayerTurn(CellValues cellValues) {
-        if (cellValues == CellValues.X) {
-            return CellValues.X;
-        } else {
-            return CellValues.O;
-        }
-    }
+
 
     public boolean validateBoardCellRange(int inputCell) {
-        if (inputCell >= 1 && inputCell <= 9) return false;
+        if (inputCell < 1 || inputCell >= 9) return false;
         throw new IndexOutOfBoundsException("input cells should be between 1 and 9.");
     }
 
@@ -126,7 +123,6 @@ public class TicTacToe {
          boolean isWonByLeftDiagonal = boardCells[0][0] == boardCells[1][1] && boardCells[1][1] == boardCells[2][2];
 
          boolean isAWinByRowColumnOrDiagonal =  isWonByFirstRow || isWonBySecondRow || isWonByThirdRow || isWonByFirstColumn || isWonBySecondColumn || isWonByThirdColumn || isWonByLeftDiagonal || isWonByRightDiagonal;
-         System.out.println(isAWinByRowColumnOrDiagonal);
          if (isAWinByRowColumnOrDiagonal) {
              return CellValues.X;
          }

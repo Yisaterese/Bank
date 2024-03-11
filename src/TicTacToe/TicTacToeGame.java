@@ -3,6 +3,8 @@ package TicTacToe;
 import InvalidBoardCellException.InvalidBoardCellException;
 import apps.CellValues;
 
+import static TicTacToe.Player.cellValues;
+
 public class TicTacToeGame {
     public static void main(String[] args) {
 
@@ -12,6 +14,7 @@ public class TicTacToeGame {
         Player currentPlayer = new Player("CurrentPlayer");
         currentPlayer = playerX;
 
+        System.out.println("    GAME START");
         while(true) {
 //            System.out.println("    GAME START");
 //            System.out.println("Player " + ticTacGame.validatePlayerTurn(cellValues) + " make a move");
@@ -20,6 +23,7 @@ public class TicTacToeGame {
                Player.validateInputCatchException();
             }catch (IndexOutOfBoundsException e){
                 Player.validateInputCatchException();
+                System.out.println(e.getMessage());
             }
         }
 
