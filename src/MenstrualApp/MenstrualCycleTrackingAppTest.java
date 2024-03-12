@@ -1,6 +1,7 @@
 package MenstrualApp;
 
 import InvalidMonthDayException.InvalidMonthDayException;
+import InvalidUserNameException.InvalidUserNameException;
 import MenstrualApp.MenstrualCycleTrackingApp;
 import org.junit.jupiter.api.Test;
 
@@ -55,8 +56,15 @@ class MenstrualCycleTrackingAppTest {
     @Test
     public void  userEntersInvalidDate_throwInvalidDateExceptionTest(){
         MenstrualCycleTrackingApp mensesTrackApp = new MenstrualCycleTrackingApp();
-        mensesTrackApp.registerUser("Ajosse Adeogun");
+        mensesTrackApp.registerUser("Azeez");
         assertThrows(DateTimeException.class,() -> mensesTrackApp.checkNextOvulation(33,3,2024, 28));
+    }
+
+    @Test
+    public void  registerTwoUsersWithSameUserName_throwInvalidUserNameExceptionTest(){
+        MenstrualCycleTrackingApp mensesTrackApp = new MenstrualCycleTrackingApp();
+        mensesTrackApp.registerUser("Azeez");
+        assertThrows(InvalidUserNameException.class,() -> mensesTrackApp.registerUser("Azeez"));
     }
 
 

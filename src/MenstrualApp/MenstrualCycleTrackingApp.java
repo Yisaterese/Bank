@@ -2,6 +2,7 @@ package MenstrualApp;
 
 
 import InvalidMonthDayException.InvalidMonthDayException;
+import InvalidUserNameException.InvalidUserNameException;
 
 import java.time.DateTimeException;
 import java.util.ArrayList;
@@ -127,8 +128,11 @@ public class MenstrualCycleTrackingApp {
         return LocalDate.of(yearOfLastFlow, lastFlowMonth, lastDayOfFlow);
     }
 
-    public void registerUser(String name) {
-        User user = new User(name);
+    public void registerUser( String username) {
+        User user = new User(username);
+        for(User myUser: users)
+            if(myUser.getUserName().equals(username))
+                throw new InvalidUserNameException("user name already exist");
         users.add(user);
     }
 

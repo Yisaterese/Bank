@@ -3,14 +3,14 @@ package MenstrualApp;
 import java.util.Date;
 
 public class User {
-    private String name;
+    private String userName;
     private Date age;
 
-    public User(String name){
-        this.name = name;
+    public User( String userName){
+        this.userName = userName;
 
     }
-    public String getName() {
-        return  name;
+    public String getUserName() {
+        return  userName;
     }
 }
