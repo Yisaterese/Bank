@@ -1,8 +1,7 @@
 package MenstrualApp;
 
-import InvalidMonthDayException.InvalidMonthDayException;
+
 import InvalidUserNameException.InvalidUserNameException;
-import MenstrualApp.MenstrualCycleTrackingApp;
 import org.junit.jupiter.api.Test;
 
 import java.time.DateTimeException;
