@@ -3,6 +3,7 @@ package MenstrualApp;
 
 import InvalidMonthDayException.InvalidMonthDayException;
 
+import java.time.DateTimeException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.time.LocalDate;
@@ -94,8 +95,8 @@ public class MenstrualCycleTrackingApp {
 
         while(valid){
 
-            if (lastDayOfFlow < 1) throw new InvalidMonthDayException("Enter a valid date");
-            else if (lastDayOfFlow > daysOfMonth)throw new InvalidMonthDayException("Enter a valid date");
+            if (lastDayOfFlow < 1) throw new DateTimeException("Enter a valid date");
+            else if (lastDayOfFlow > daysOfMonth)throw new DateTimeException("Enter a valid date");
                 break;
 
         }

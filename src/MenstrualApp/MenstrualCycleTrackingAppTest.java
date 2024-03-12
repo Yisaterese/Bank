@@ -1,11 +1,14 @@
 package MenstrualApp;
 
+import InvalidMonthDayException.InvalidMonthDayException;
 import MenstrualApp.MenstrualCycleTrackingApp;
 import org.junit.jupiter.api.Test;
 
+import java.time.DateTimeException;
 import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class MenstrualCycleTrackingAppTest {
 
@@ -50,11 +53,12 @@ class MenstrualCycleTrackingAppTest {
     }
 
     @Test
-    public void  checkUsersMTest(){
+    public void  userEntersInvalidDate_throwInvalidDateExceptionTest(){
         MenstrualCycleTrackingApp mensesTrackApp = new MenstrualCycleTrackingApp();
         mensesTrackApp.registerUser("Ajosse Adeogun");
-        LocalDate expectedOutPut = LocalDate.of(2024,04,13);
-        assertEquals(expectedOutPut ,mensesTrackApp.checkNextOvulation(2,3,2024, 28));
-
+        assertThrows(DateTimeException.class,() -> mensesTrackApp.checkNextOvulation(33,3,2024, 28));
     }
+
+
+
 }
