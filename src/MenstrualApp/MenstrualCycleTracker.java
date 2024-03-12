@@ -19,8 +19,6 @@ MenstrualCycleTracker {
                 switch (options) {
                     case 1:
                         tracker.signUp();
-                        //tracker.displayOptions();
-                        //break;
                     case 2:
                         tracker.welcomeMessage();
                         tracker.getUserName();
@@ -30,6 +28,8 @@ MenstrualCycleTracker {
                         break;
                     default:
                         System.out.println("Invalid input");
+                    case 3:
+                        System.exit(0);
                 }
             }
             }catch (InvalidInputException ex){

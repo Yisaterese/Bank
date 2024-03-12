@@ -37,6 +37,7 @@ public class MenstrualCycleTrackingApp {
     }
 
     public void getUserAge() {
+
         while (true) {
             try {
                 System.out.println("  How old are you?.");
@@ -59,18 +60,20 @@ public class MenstrualCycleTrackingApp {
                                    Get insights, predictions, and helpful reminders.
                                    Let's get started!
                                 """);
+                        //displayMenstrualCycleInformation();
                     } else if (response.equalsIgnoreCase("No")) {
                         System.out.println("Goodbye, thank you for choosing us.");
                         System.exit(0);
                     }
-                }
+                }break;
             } catch (InputMismatchException ex) {
                 System.out.println("Enter a valid name");
+                input.next();
             }
-            input.next();
+
         }
     }
-    public void displayMenstrualCycleInformation() {
+    public  void displayMenstrualCycleInformation() {
         System.out.print("""
                     What is menstruation?
                     Menstruation is one part of a woman's cycle when the lining of the uterus (endometrium) is shed.
@@ -97,42 +100,39 @@ public class MenstrualCycleTrackingApp {
     }
 
     public void calculateMenstrualCycle() {
-        try {
-            System.out.println("When was the last day of your menstrual flow?.");
-            int lastDayOfFlow = input.nextInt();
-            int daysOfMonth = 31;
-            boolean valid = true;
+        while (true) {
+            try {
+                System.out.println("When was the last day of your menstrual flow?.");
+                int lastDayOfFlow = input.nextInt();
+                int daysOfMonth = 31;
 
-            while (valid) {
 
-                if (lastDayOfFlow < 1 || lastDayOfFlow > daysOfMonth) throw new DateTimeException("Enter a valid date");
-                else {
-                    try {
-                        System.out.println("What month did you experience the last flow?.");
-                        int lastFlowMonth = input.nextInt();
-                        System.out.println("What year was that the last flow?.");
-                        int yearOfLastFlow = input.nextInt();
-
-                        System.out.println("What is the average length of your menstrual cycle");
-                        int menstrualCycleLength = input.nextInt();
-
-                        LocalDate dateOfMenstrualFlow = collectDAteOfMenstrualFlow(yearOfLastFlow, lastFlowMonth, lastDayOfFlow);
-                        LocalDate nextMenstrualFlow = getNextMenstrualFlow(dateOfMenstrualFlow, menstrualCycleLength);
-                        System.out.println("Your next menstrual flow will be: " + nextMenstrualFlow);
-
-                        LocalDate window = getNextMenstrualFlow(nextMenstrualFlow, ovulationPeriod);
-                        System.out.println("Your window period will be on " + window);
-                    }catch (InputMismatchException ex){
-                        System.out.println("Enter a valid date");
-                    }
-
+                if (lastDayOfFlow < 1 || lastDayOfFlow > daysOfMonth) {
+                    throw new DateTimeException("Enter a valid date");
                 }
+                System.out.println("What month did you experience the last flow?.");
+                int lastFlowMonth = input.nextInt();
+                System.out.println("What year was that the last flow?.");
+                int yearOfLastFlow = input.nextInt();
+
+                System.out.println("What is the average length of your menstrual cycle");
+                int menstrualCycleLength = input.nextInt();
+
+                LocalDate dateOfMenstrualFlow = collectDAteOfMenstrualFlow(yearOfLastFlow, lastFlowMonth, lastDayOfFlow);
+                LocalDate nextMenstrualFlow = getNextMenstrualFlow(dateOfMenstrualFlow, menstrualCycleLength);
+                System.out.println("Your next menstrual flow will be: " + nextMenstrualFlow);
+
+                LocalDate window = getNextMenstrualFlow(nextMenstrualFlow, ovulationPeriod);
+                System.out.println("Your window period will be on " + window);
+                break;
+            } catch (InputMismatchException ex) {
+                System.out.println("Enter a valid date");
+                input.next();
+            } catch (DateTimeException exception) {
+                System.out.println("Enter a valid date");
+                input.next();
             }
-
-        }catch (DateTimeException exception){
-            System.out.println("Enter a valid date");
         }
-
     }
 
     private static LocalDate getNextMenstrualFlow(LocalDate dateOfMenstrualFlow, int menstrualCycleLength) {
