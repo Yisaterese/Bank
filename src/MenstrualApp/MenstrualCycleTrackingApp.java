@@ -1,11 +1,17 @@
 package MenstrualApp;
 
+
+import InvalidMonthDayException.InvalidMonthDayException;
+
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.time.LocalDate;
 
 public class MenstrualCycleTrackingApp {
+    private String name;
+    private final ArrayList <User> users = new ArrayList<>();
     private static final Scanner input = new Scanner(System.in);
-    LocalDate presentDate = LocalDate.now();
+    int ovulationPeriod = 14;
 
     private void displayAppName() {
         System.out.println("\tWELCOME TO FEMALE LULU.");
@@ -19,10 +25,11 @@ public class MenstrualCycleTrackingApp {
                 """);
     }
 
-    public void getUserName() {
+    public String  getUserName() {
         System.out.print("What is your name?\n");
         String name = input.nextLine();
         System.out.print("Hello..... " + name);
+        return name;
     }
 
     public void getUserAge() {
@@ -87,10 +94,8 @@ public class MenstrualCycleTrackingApp {
 
         while(valid){
 
-            if (lastDayOfFlow < 1)
-                System.out.print("Enter a valid date");
-            else if (lastDayOfFlow > daysOfMonth)
-                System.out.print("Enter a valid date");
+            if (lastDayOfFlow < 1) throw new InvalidMonthDayException("Enter a valid date");
+            else if (lastDayOfFlow > daysOfMonth)throw new InvalidMonthDayException("Enter a valid date");
                 break;
 
         }
@@ -104,12 +109,48 @@ public class MenstrualCycleTrackingApp {
         System.out.println("What is the average length of your menstrual cycle");
         int menstrualCycleLength = input.nextInt();
 
-        LocalDate dateOfMenstrualFlow = LocalDate.of(yearOfLastFlow, lastFlowMonth, lastDayOfFlow);
-        LocalDate nextMenstrualFlow = dateOfMenstrualFlow.plusDays(menstrualCycleLength);
+        LocalDate dateOfMenstrualFlow = collectDAteOfMenstrualFlow(yearOfLastFlow, lastFlowMonth, lastDayOfFlow);
+        LocalDate nextMenstrualFlow = getNextMenstrualFlow(dateOfMenstrualFlow, menstrualCycleLength);
         System.out.println("Your next menstrual flow will be: " + nextMenstrualFlow);
 
-        int OvulationPeriod = 14;
-        LocalDate window = nextMenstrualFlow.plusDays(OvulationPeriod);
+
+        LocalDate window = getNextMenstrualFlow(nextMenstrualFlow, ovulationPeriod);
         System.out.println("Your window period will be on " + window);
+    }
+
+    private static LocalDate getNextMenstrualFlow(LocalDate dateOfMenstrualFlow, int menstrualCycleLength) {
+        return dateOfMenstrualFlow.plusDays(menstrualCycleLength);
+    }
+
+    private static LocalDate collectDAteOfMenstrualFlow(int yearOfLastFlow, int lastFlowMonth, int lastDayOfFlow) {
+        return LocalDate.of(yearOfLastFlow, lastFlowMonth, lastDayOfFlow);
+    }
+
+    public void registerUser(String name) {
+        User user = new User(name);
+        users.add(user);
+    }
+
+    public int numberOfUsers() {
+        return users.size();
+    }
+
+    public LocalDate checkPeriod(int lastDayOfPeriod, int periodMonth, int yearOfLastPeriod, int averageCycleLength) {
+        LocalDate dateOfMenses = collectDAteOfMenstrualFlow(yearOfLastPeriod,periodMonth,lastDayOfPeriod);
+        return  getNextMenstrualFlow(dateOfMenses,averageCycleLength);
+    }
+
+
+    public LocalDate checkNextOvulation(int lastDayOfPeriod, int periodMonth, int yearOfLastPeriod, int averageCycleLength) {
+        LocalDate dateOfMenses = checkPeriod(lastDayOfPeriod,periodMonth, yearOfLastPeriod,averageCycleLength);
+        return getNextMenstrualFlow(dateOfMenses, ovulationPeriod);
+    }
+
+    public void setAppName(String name) {
+        this.name = name;
+    }
+
+    public String getAppName() {
+        return name;
     }
 }
