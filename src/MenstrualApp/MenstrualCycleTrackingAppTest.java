@@ -20,14 +20,6 @@ class MenstrualCycleTrackingAppTest {
         assertEquals("Female lulu",mensesTrackApp.getAppName());
     }
 
-
-    @Test
-    public void testCanCheckUserName(){
-        MenstrualCycleTrackingApp mensesTrackApp = new MenstrualCycleTrackingApp();
-//        mensesTrackApp.getUserName();
-//
-    }
-
     @Test
     public void registerUser_numberOfUserIsOneTest(){
         MenstrualCycleTrackingApp mensesTrackApp = new MenstrualCycleTrackingApp();
