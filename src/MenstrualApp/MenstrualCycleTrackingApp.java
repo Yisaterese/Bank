@@ -60,7 +60,6 @@ public class MenstrualCycleTrackingApp {
                                    Get insights, predictions, and helpful reminders.
                                    Let's get started!
                                 """);
-                        //displayMenstrualCycleInformation();
                     } else if (response.equalsIgnoreCase("No")) {
                         System.out.println("Goodbye, thank you for choosing us.");
                         System.exit(0);
