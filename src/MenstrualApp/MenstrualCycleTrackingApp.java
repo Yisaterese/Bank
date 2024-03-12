@@ -6,6 +6,7 @@ import InvalidUserNameException.InvalidUserNameException;
 
 import java.time.DateTimeException;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.time.LocalDate;
 
@@ -36,33 +37,39 @@ public class MenstrualCycleTrackingApp {
     }
 
     public void getUserAge() {
-        System.out.println("  How old are you?.");
-        int userAge = input.nextInt();
-        int averageMenstruationAge = 12;
+        while (true) {
+            try {
+                System.out.println("  How old are you?.");
+                int userAge = input.nextInt();
+                int averageMenstruationAge = 12;
 
-        if (userAge < averageMenstruationAge) {
-            System.out.println("""
-                    Hello! This app is designed for users who have started menstruating and may contain sensitive content related to menstrual health.
-                    If you're under 12 years of age and have questions, consider talking to a trusted adult or healthcare provider for guidance. Take care!
-                    """);
+                if (userAge < averageMenstruationAge) {
+                    System.out.println("""
+                            Hello! This app is designed for users who have started menstruating and may contain sensitive content related to menstrual health.
+                            If you're under 12 years of age and have questions, consider talking to a trusted adult or healthcare provider for guidance. Take care!
+                            """);
 
-            System.out.println("Would you like to continue with the app? enter Yes/No: ");
-            String response = input.next();
+                    System.out.println("Would you like to continue with the app? enter Yes/No: ");
+                    String response = input.next();
 
-            if (response.equalsIgnoreCase("Yes")) {
-                System.out.println("""
-                    Hello welcome to Female Lulu Menstrual cycle tracking app!.
-                    Track and monitor your menstrual cycle with ease.
-                    Get insights, predictions, and helpful reminders.
-                    Let's get started!
-                 """);
-            } else if (response.equalsIgnoreCase("No")) {
-                System.out.println("Goodbye, thank you for choosing us.");
-                System.exit(0);
+                    if (response.equalsIgnoreCase("Yes")) {
+                        System.out.println("""
+                                   Hello welcome to Female Lulu Menstrual cycle tracking app!.
+                                   Track and monitor your menstrual cycle with ease.
+                                   Get insights, predictions, and helpful reminders.
+                                   Let's get started!
+                                """);
+                    } else if (response.equalsIgnoreCase("No")) {
+                        System.out.println("Goodbye, thank you for choosing us.");
+                        System.exit(0);
+                    }
+                }
+            } catch (InputMismatchException ex) {
+                System.out.println("Enter a valid name");
             }
+            input.next();
         }
     }
-
     public void displayMenstrualCycleInformation() {
         System.out.print("""
                     What is menstruation?
@@ -100,22 +107,25 @@ public class MenstrualCycleTrackingApp {
 
                 if (lastDayOfFlow < 1 || lastDayOfFlow > daysOfMonth) throw new DateTimeException("Enter a valid date");
                 else {
+                    try {
+                        System.out.println("What month did you experience the last flow?.");
+                        int lastFlowMonth = input.nextInt();
+                        System.out.println("What year was that the last flow?.");
+                        int yearOfLastFlow = input.nextInt();
 
-                    System.out.println("What month did you experience the last flow?.");
-                    int lastFlowMonth = input.nextInt();
-                    System.out.println("What year was that the last flow?.");
-                    int yearOfLastFlow = input.nextInt();
+                        System.out.println("What is the average length of your menstrual cycle");
+                        int menstrualCycleLength = input.nextInt();
 
-                    System.out.println("What is the average length of your menstrual cycle");
-                    int menstrualCycleLength = input.nextInt();
+                        LocalDate dateOfMenstrualFlow = collectDAteOfMenstrualFlow(yearOfLastFlow, lastFlowMonth, lastDayOfFlow);
+                        LocalDate nextMenstrualFlow = getNextMenstrualFlow(dateOfMenstrualFlow, menstrualCycleLength);
+                        System.out.println("Your next menstrual flow will be: " + nextMenstrualFlow);
 
-                    LocalDate dateOfMenstrualFlow = collectDAteOfMenstrualFlow(yearOfLastFlow, lastFlowMonth, lastDayOfFlow);
-                    LocalDate nextMenstrualFlow = getNextMenstrualFlow(dateOfMenstrualFlow, menstrualCycleLength);
-                    System.out.println("Your next menstrual flow will be: " + nextMenstrualFlow);
+                        LocalDate window = getNextMenstrualFlow(nextMenstrualFlow, ovulationPeriod);
+                        System.out.println("Your window period will be on " + window);
+                    }catch (InputMismatchException ex){
+                        System.out.println("Enter a valid date");
+                    }
 
-
-                    LocalDate window = getNextMenstrualFlow(nextMenstrualFlow, ovulationPeriod);
-                    System.out.println("Your window period will be on " + window);
                 }
             }
 
