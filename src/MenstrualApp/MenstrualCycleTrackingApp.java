@@ -28,8 +28,9 @@ public class MenstrualCycleTrackingApp {
     }
 
     public String  getUserName() {
-        System.out.print("What is your name?\n");
         String name = input.nextLine();
+        System.out.println("What is your name?");
+        name = input.nextLine();
         System.out.print("Hello..... " + name);
         return name;
     }
@@ -89,35 +90,39 @@ public class MenstrualCycleTrackingApp {
     }
 
     public void calculateMenstrualCycle() {
-        System.out.println("When was the last day of your menstrual flow?.");
-        int lastDayOfFlow = input.nextInt();
-        int daysOfMonth = 31;
-        boolean valid = true;
+        try {
+            System.out.println("When was the last day of your menstrual flow?.");
+            int lastDayOfFlow = input.nextInt();
+            int daysOfMonth = 31;
+            boolean valid = true;
 
-        while(valid){
+            while (valid) {
 
-            if (lastDayOfFlow < 1) throw new DateTimeException("Enter a valid date");
-            else if (lastDayOfFlow > daysOfMonth)throw new DateTimeException("Enter a valid date");
-                break;
+                if (lastDayOfFlow < 1 || lastDayOfFlow > daysOfMonth) throw new DateTimeException("Enter a valid date");
+                else {
 
+                    System.out.println("What month did you experience the last flow?.");
+                    int lastFlowMonth = input.nextInt();
+                    System.out.println("What year was that the last flow?.");
+                    int yearOfLastFlow = input.nextInt();
+
+                    System.out.println("What is the average length of your menstrual cycle");
+                    int menstrualCycleLength = input.nextInt();
+
+                    LocalDate dateOfMenstrualFlow = collectDAteOfMenstrualFlow(yearOfLastFlow, lastFlowMonth, lastDayOfFlow);
+                    LocalDate nextMenstrualFlow = getNextMenstrualFlow(dateOfMenstrualFlow, menstrualCycleLength);
+                    System.out.println("Your next menstrual flow will be: " + nextMenstrualFlow);
+
+
+                    LocalDate window = getNextMenstrualFlow(nextMenstrualFlow, ovulationPeriod);
+                    System.out.println("Your window period will be on " + window);
+                }
+            }
+
+        }catch (DateTimeException exception){
+            System.out.println("Enter a valid date");
         }
 
-        System.out.println("What month did you experience the last flow?.");
-        int lastFlowMonth = input.nextInt();
-
-        System.out.println("What year was that the last flow?.");
-        int yearOfLastFlow = input.nextInt();
-
-        System.out.println("What is the average length of your menstrual cycle");
-        int menstrualCycleLength = input.nextInt();
-
-        LocalDate dateOfMenstrualFlow = collectDAteOfMenstrualFlow(yearOfLastFlow, lastFlowMonth, lastDayOfFlow);
-        LocalDate nextMenstrualFlow = getNextMenstrualFlow(dateOfMenstrualFlow, menstrualCycleLength);
-        System.out.println("Your next menstrual flow will be: " + nextMenstrualFlow);
-
-
-        LocalDate window = getNextMenstrualFlow(nextMenstrualFlow, ovulationPeriod);
-        System.out.println("Your window period will be on " + window);
     }
 
     private static LocalDate getNextMenstrualFlow(LocalDate dateOfMenstrualFlow, int menstrualCycleLength) {
@@ -145,10 +150,16 @@ public class MenstrualCycleTrackingApp {
         return  getNextMenstrualFlow(dateOfMenses,averageCycleLength);
     }
 
-
-    public LocalDate checkNextOvulation(int lastDayOfPeriod, int periodMonth, int yearOfLastPeriod, int averageCycleLength) {
+    public  LocalDate checkNextOvulation(int lastDayOfPeriod, int periodMonth, int yearOfLastPeriod, int averageCycleLength) {
         LocalDate dateOfMenses = checkPeriod(lastDayOfPeriod,periodMonth, yearOfLastPeriod,averageCycleLength);
         return getNextMenstrualFlow(dateOfMenses, ovulationPeriod);
+    }
+    public void displayOptions(){
+        System.out.println("""
+               1. Register.
+               2. Check your next period and your next ovulation.
+               3. Exit.
+               """);
     }
 
     public void setAppName(String name) {
@@ -157,5 +168,12 @@ public class MenstrualCycleTrackingApp {
 
     public String getAppName() {
         return name;
+    }
+
+    public void signUp(){
+        System.out.println("Enter a user name to register");
+        String userName = input.next();
+        registerUser(userName);
+        System.out.println("User name successfully saved.");
     }
 }
