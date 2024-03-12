@@ -32,8 +32,8 @@ public class Player {
         return name;
     }
 
-    public static CellValues validatePlayerTurn(CellValues cellValues) {
-        if (cellValues == CellValues.X) {
+    public static CellValues validatePlayerTurn(CellValues inputCellValue) {
+        if (inputCellValue == CellValues.X) {
             return CellValues.X;
         } else {
             return CellValues.O;
