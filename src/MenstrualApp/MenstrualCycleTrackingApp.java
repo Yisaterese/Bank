@@ -165,9 +165,8 @@ public class MenstrualCycleTrackingApp {
     }
     public void displayOptions(){
         System.out.println("""
-               1. Register.
-               2. Check your next period and your next ovulation.
-               3. Exit.
+               1. Register to check your next period and your next ovulation.
+               2. Exit.
                """);
     }
 

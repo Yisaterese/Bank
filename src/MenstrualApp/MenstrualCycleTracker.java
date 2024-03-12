@@ -3,6 +3,7 @@ package MenstrualApp;
 import InvalidInputException.InvalidInputException;
 
 import java.io.ObjectInputValidation;
+import java.util.InputMismatchException;
 
 public class
 
@@ -24,14 +25,14 @@ MenstrualCycleTracker {
                         tracker.displayMenstrualCycleInformation();
                         tracker.calculateMenstrualCycle();
                         break;
-                    default:
-                        System.out.println("Invalid input");
                     case 3:
                         System.exit(0);
+                    default:
+                        System.out.println("Invalid input");
                 }
                 break;
-            } catch (InvalidInputException ex) {
-                System.out.println("Enter a valid input.");
+            } catch (InputMismatchException ex) {
+                System.out.print("Enter a valid input.");
                 input.next();
             }
         }
