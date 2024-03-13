@@ -112,6 +112,14 @@ public class MyBankTest {
         zenithBank.transfer(account1.getAccountNumber(),account2.getAccountNumber(),3000, "correctPin");
         assertEquals(2000, zenithBank.checkBalance(account1.getAccountNumber(), "correctPin"));
         assertEquals(3000, zenithBank.checkBalance(account2.getAccountNumber(),"correctPin"));
+    }
+    @Test
+    public void registerAccount_findAccountTest(){
+        MyBank myBank = new MyBank();
+        MyAccount account1 = myBank.registerCustomer("Modupe ","Abiodun", "CorrectPin");
+        MyAccount account2 = myBank.registerCustomer("Moshud ","Abiodun", "CorrectPin");
+        assertEquals(account1,myBank.findAccount(account1.getAccountNumber()));
+        assertEquals(account2,myBank.findAccount(account2.getAccountNumber()));
 
     }
 
