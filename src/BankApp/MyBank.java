@@ -43,7 +43,7 @@ public class MyBank {
     }
 
 
-    public void transfer(int transferAmount, int senderAccountNumber, int recipientAccountNumber, String correctPin) {
+    public void transfer( int senderAccountNumber, int recipientAccountNumber, int transferAmount,String correctPin) {
         for (MyAccount myAccount : myAccounts) {
             if (isValid(senderAccountNumber, myAccount)) {
                 myAccount.withdraw(transferAmount, correctPin);

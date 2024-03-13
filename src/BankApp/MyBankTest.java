@@ -80,15 +80,6 @@ public class MyBankTest {
         assertEquals(0, zenithBank.checkBalance(1234567890, "correctPin"));
     }
 
-    @Test
-    public void testAccountCanTransferFromAccountOne_toAccountTwo() {
-        MyBank zenithBank = new MyBank();
-        MyAccount account1 = zenithBank.registerCustomer("Ayodele", "john", "correctPin");
-        MyAccount account2 = zenithBank.registerCustomer("Ayodele", "john", "correctPin");
-        zenithBank.deposit(5_000, account1.getAccountNumber());
-        zenithBank.transfer(3_000, account1.getAccountNumber(), account2.getAccountNumber(), "correctPin");
-        assertEquals(2_000, zenithBank.checkBalance(account1.getAccountNumber(), "correctpin"));
-    }
 
 
     @Test
@@ -111,6 +102,17 @@ public class MyBankTest {
         MyAccount account3 = zenithBank.registerCustomer("Ayodele", "john", "correctPin");
         assertEquals(3, zenithBank.numberOfAccounts());
         assertThrows(InvalidAccountException.class,() -> zenithBank.removeAccount(123456795,"IncorrectPin"));
+    }
+    @Test
+    public void testAccountCanTransferFromAccountOne_toAccountTwo() {
+        MyBank zenithBank = new MyBank();
+        MyAccount account1 = zenithBank.registerCustomer("Ayodele", "john", "correctPin");
+        MyAccount account2 = zenithBank.registerCustomer("Ayodele", "johnson", "correctPin");
+        account1.deposit(5000);
+        zenithBank.transfer(account1.getAccountNumber(),account2.getAccountNumber(),3000, "correctPin");
+        assertEquals(2000, zenithBank.checkBalance(account1.getAccountNumber(), "correctPin"));
+        assertEquals(3000, zenithBank.checkBalance(account2.getAccountNumber(),"correctPin"));
+
     }
 
 
