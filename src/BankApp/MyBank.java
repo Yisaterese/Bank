@@ -116,13 +116,14 @@ public int generateAccountNumber(){
                 case 4 -> checkYourBalance();
                 case 5 -> closeAccount();
                 case 6 -> exitOption();
-
-                default:
-                  //  JOptionPane.showMessageDialog(null, "Invalid option selected.");
-                 //   break;
+                default -> defaultCase();
             }
         }
 
+    }
+
+    private void defaultCase() {
+        JOptionPane.showMessageDialog(null, "Invalid option selected.");
     }
 
     private void exitOption() {
