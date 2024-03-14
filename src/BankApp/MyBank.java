@@ -114,18 +114,30 @@ public int generateAccountNumber(){
                 case 2 -> withdrawFromValidAccount();
                 case 3 -> validTransfer();
                 case 4 -> checkYourBalance();
-                case 5 ->
-                    JOptionPane.showMessageDialog(null, "Closing Account...");
+                case 5 -> closeAccount();
+                case 6 -> exitOption();
 
-                case 6 ->
-                    JOptionPane.showMessageDialog(null, "Exiting...");
-                    System.exit(0);
                 default:
-                    JOptionPane.showMessageDialog(null, "Invalid option selected.");
-                    break;
+                  //  JOptionPane.showMessageDialog(null, "Invalid option selected.");
+                 //   break;
             }
         }
 
+    }
+
+    private void exitOption() {
+        JOptionPane.showMessageDialog(null, "Exiting...");
+        System.exit(0);
+    }
+
+    private void closeAccount() {
+        if(accountCreated){
+            String accountNumber = JOptionPane.showInputDialog(null, "Enter the account number you want to close");
+            int validAccountNumber = Integer.parseInt(accountNumber);
+            myAccounts.remove(findAccount(validAccountNumber));
+        }else{
+            JOptionPane.showMessageDialog(null, "Account does not exist");
+        }
     }
 
     private void checkYourBalance() {
