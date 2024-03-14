@@ -2,13 +2,14 @@ package BankApp;
 
 import apps.InvalidPinException;
 
+import javax.swing.*;
 import java.util.ArrayList;
 
 public class MyBank {
 
     public MyAccount registerCustomer(String firstName, String lastName, String pin) {
        MyAccount myAccount =  new MyAccount(firstName + " " +lastName, pin);
-       myAccount.setAccountNumber(accountNumber++);
+       myAccount.setAccountNumber(generateAccountNumber());
        myAccounts.add(myAccount);
        return myAccount;
    }
@@ -55,7 +56,9 @@ public class MyBank {
         }
 
     }
-
+public int generateAccountNumber(){
+     return    this.accountNumber++;
+}
     public MyAccount findAccount(int accountNumber){
         for(MyAccount account: myAccounts){
             if(isValid(accountNumber, account)){
@@ -85,6 +88,7 @@ public class MyBank {
         return myAccount.getAccountNumber() == accountNumber;
     }
 
+    private boolean accountCreated;
     private boolean isValidating(int accountNumber){
         for(MyAccount account: myAccounts)
             if(account.getAccountNumber() == accountNumber)
@@ -94,4 +98,81 @@ public class MyBank {
     private   int accountNumber = 1234567890;
     private int  numberOfAccounts;
 
+
+
+    public void executeMain() {
+        MyAccount myAccount = new MyAccount("hamzat", "correctPin");
+        JOptionPane.showMessageDialog(null, " Welcome to FUNDFIX BANK");
+        while (true) {
+            String[] options = {"Create Account", "Deposit", "Withdraw", "Transfer", "Check Balance", "Close Account", "Exit"};
+
+            int selection = JOptionPane.showOptionDialog(null, "Select an option:", "Bank App",
+                    JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+
+            switch (selection) {
+                case 0:
+                    createAccount();
+                    break;
+                case 1:
+                   depositToAccount();
+                    break;
+                case 2:
+                    JOptionPane.showMessageDialog(null, "Withdrawing...");
+                    break;
+                case 3:
+                    // Transfer
+                    JOptionPane.showMessageDialog(null, "Transferring...");
+                    break;
+                case 4:
+                    // Check Balance
+                    JOptionPane.showMessageDialog(null, "Checking Balance...");
+                    break;
+                case 5:
+                    // Close Account
+                    JOptionPane.showMessageDialog(null, "Closing Account...");
+                    break;
+                case 6:
+                    // Exit
+                    JOptionPane.showMessageDialog(null, "Exiting...");
+                    System.exit(0);
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(null, "Invalid option selected.");
+                    break;
+            }
+        }
+
+    }
+
+    private void depositToAccount() {
+        if (accountCreated) {
+            String stringDepositAmount = JOptionPane.showInputDialog(null, "Enter deposit amount");
+            int depositAmount = Integer.parseInt(stringDepositAmount);
+            deposit(depositAmount, generateAccountNumber());
+            JOptionPane.showMessageDialog(null, "Deposit successful");
+        } else {
+            JOptionPane.showMessageDialog(null, "you have not created an account");
+            createAccount();
+        }
+    }
+
+    private void createAccount() {
+        String firstName = JOptionPane.showInputDialog(null,"Enter your first name");
+        String lastName = JOptionPane.showInputDialog(null,"Enter your last name");
+        String pin = JOptionPane.showInputDialog(null,"Enter your pin");
+        registerCustomer(firstName,lastName,pin);
+        accountCreated = true;
+        JOptionPane.showMessageDialog(null,"Hello "+firstName+" "+lastName+ ",your account number is: "+generateAccountNumber());
+
+    }
+
 }
+
+
+
+
+
+
+
+
+
