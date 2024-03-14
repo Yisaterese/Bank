@@ -114,9 +114,6 @@ public int generateAccountNumber(){
                 case 2 -> withdrawFromValidAccount();
                 case 3 -> validTransfer();
                 case 4 -> checkYourBalance();
-
-                    JOptionPane.showMessageDialog(null, "Checking Balance...");
-
                 case 5 ->
                     JOptionPane.showMessageDialog(null, "Closing Account...");
 
@@ -136,7 +133,10 @@ public int generateAccountNumber(){
             String accountNumber = JOptionPane.showInputDialog(null, "Enter Your account number");
             int validAccount = Integer.parseInt(accountNumber);
             String validPin = JOptionPane.showInputDialog(null, "Enter a valid pin");
-            checkBalance(validAccount, validPin);
+            JOptionPane.showMessageDialog(null, "Your Balance is "+checkBalance(validAccount, validPin));
+        }else{
+            JOptionPane.showMessageDialog(null,"Failed to check balance, you don't have an account");
+            createAccount();
         }
     }
 
