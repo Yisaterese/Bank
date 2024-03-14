@@ -101,7 +101,6 @@ public int generateAccountNumber(){
 
 
     public void executeMain() {
-        MyAccount myAccount = new MyAccount("hamzat", "correctPin");
         JOptionPane.showMessageDialog(null, " Welcome to FUNDFIX BANK");
         while (true) {
             String[] options = {"Create Account", "Deposit", "Withdraw", "Transfer", "Check Balance", "Close Account", "Exit"};
@@ -117,14 +116,12 @@ public int generateAccountNumber(){
                    depositToAccount();
                     break;
                 case 2:
-                    JOptionPane.showMessageDialog(null, "Withdrawing...");
-                    break;
+                    withdrawFromValidAccount();                   break;
                 case 3:
-                    // Transfer
-                    JOptionPane.showMessageDialog(null, "Transferring...");
+                   validTransfer();
                     break;
                 case 4:
-                    // Check Balance
+
                     JOptionPane.showMessageDialog(null, "Checking Balance...");
                     break;
                 case 5:
@@ -141,6 +138,40 @@ public int generateAccountNumber(){
                     break;
             }
         }
+
+    }
+
+    private void validTransfer() {
+        if(accountCreated){
+            String theSendersAccount = JOptionPane.showInputDialog(null, "Enter Your account");
+            int sendersAccount = Integer.parseInt(theSendersAccount);
+            String theRecipientAccount = JOptionPane.showInputDialog(null, "Enter Your account");
+            int recipientAccount = Integer.parseInt(theRecipientAccount);
+            String theTransferAccount = JOptionPane.showInputDialog(null, "Enter Your account");
+            int transferAmount = Integer.parseInt(theTransferAccount);
+            String validPin = JOptionPane.showInputDialog(null, "Enter Your account");
+            transfer(sendersAccount,recipientAccount,transferAmount,validPin);
+            JOptionPane.showMessageDialog(null, "Transfer successful");
+        }else{
+            JOptionPane.showMessageDialog(null,"Transfer failed, you don't have an account");
+            createAccount();
+        }
+    }
+
+    private void withdrawFromValidAccount() {
+        if(accountCreated){
+            String stringWithDrawAmount = JOptionPane.showInputDialog(null,"Enter withdraw amount");
+            int withdrawAmount = Integer.parseInt(stringWithDrawAmount);
+            String stringAccountNumber = JOptionPane.showInputDialog(null, "Enter account number for withdraw");
+            int accountNumber = Integer.parseInt(stringAccountNumber);
+            String correctPin = JOptionPane.showInputDialog(null, "Enter a valid pin");
+            withdraw(withdrawAmount,accountNumber,correctPin);
+            JOptionPane.showMessageDialog(null, "Withdraw successful");
+        }else{
+            JOptionPane.showMessageDialog(null, "You don't have an account");
+            createAccount();
+        }
+        JOptionPane.showMessageDialog(null, "Withdrawing...");
 
     }
 
