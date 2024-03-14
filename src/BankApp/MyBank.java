@@ -109,36 +109,35 @@ public int generateAccountNumber(){
                     JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
 
             switch (selection) {
-                case 0:
-                    createAccount();
-                    break;
-                case 1:
-                   depositToAccount();
-                    break;
-                case 2:
-                    withdrawFromValidAccount();                   break;
-                case 3:
-                   validTransfer();
-                    break;
-                case 4:
+                case 0 -> createAccount();
+                case 1 -> depositToAccount();
+                case 2 -> withdrawFromValidAccount();
+                case 3 -> validTransfer();
+                case 4 -> checkYourBalance();
 
                     JOptionPane.showMessageDialog(null, "Checking Balance...");
-                    break;
-                case 5:
-                    // Close Account
+
+                case 5 ->
                     JOptionPane.showMessageDialog(null, "Closing Account...");
-                    break;
-                case 6:
-                    // Exit
+
+                case 6 ->
                     JOptionPane.showMessageDialog(null, "Exiting...");
                     System.exit(0);
-                    break;
                 default:
                     JOptionPane.showMessageDialog(null, "Invalid option selected.");
                     break;
             }
         }
 
+    }
+
+    private void checkYourBalance() {
+        if(accountCreated){
+            String accountNumber = JOptionPane.showInputDialog(null, "Enter Your account number");
+            int validAccount = Integer.parseInt(accountNumber);
+            String validPin = JOptionPane.showInputDialog(null, "Enter a valid pin");
+            checkBalance(validAccount, validPin);
+        }
     }
 
     private void validTransfer() {
