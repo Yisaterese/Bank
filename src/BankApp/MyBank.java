@@ -6,7 +6,7 @@ import javax.swing.*;
 import java.util.ArrayList;
 
 public class MyBank {
-
+    MyAccount myAccount = new MyAccount("ijaoba", "correctPin");
     public MyAccount registerCustomer(String firstName, String lastName, String pin) {
        MyAccount myAccount =  new MyAccount(firstName + " " +lastName, pin);
        myAccount.setAccountNumber(generateAccountNumber());
@@ -57,7 +57,8 @@ public class MyBank {
 
     }
 public int generateAccountNumber(){
-     return    this.accountNumber++;
+        int account = this. accountNumber;
+     return   ++account;
 }
     public MyAccount findAccount(int accountNumber){
         for(MyAccount account: myAccounts){
@@ -96,7 +97,6 @@ public int generateAccountNumber(){
         throw new InvalidAccountException("Incorrect account number");
     }
     private   int accountNumber = 1234567890;
-    private int  numberOfAccounts;
 
 
 
@@ -121,7 +121,7 @@ public int generateAccountNumber(){
         }
 
     }
-
+private int numberOfAccounts;
     private void defaultCase() {
         JOptionPane.showMessageDialog(null, "Invalid option selected.");
     }
