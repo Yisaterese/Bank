@@ -14,7 +14,7 @@ public class Customer extends User {
       super(name, age, emailAddress, homeAddress, password, phoneNumber);
    }
 
-   public void buy(String nameOfProduct, int quantity, double amount){
-
+   public void buy(Product product){
+      shoppingCart.add(product);
    }
 }

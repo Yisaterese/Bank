@@ -17,7 +17,11 @@ private List<Item> items = new ArrayList<>();
 
     }
 
-    public void buyProduct(Customer customer, Product product) {
+    public void buyProduct(Customer customer,Product product) {
+      items.remove(product);
+    }
 
+    public void addProductToStore(Product product) {
+        //items.add();
     }
 }
