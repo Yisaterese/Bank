@@ -24,10 +24,11 @@ public class EStoreTest {
          eStore.registerCustomer(customer2);
          Product product1 = new Product("Orange", 200, "sweet like fanta", GROCERIES);
          Item item1 = new Item(2, product1);
-        eStore.addProductToStore(product1);
+         eStore.addProductToStore(product1);
          ShoppingCart shoppingCart = new ShoppingCart(item1);
          customer1.buy(product1);
          eStore.buyProduct(customer1,product1);
+
 
 
 

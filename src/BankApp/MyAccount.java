@@ -3,12 +3,12 @@ package BankApp;
 import apps.InvalidPinException;
 
 public class MyAccount {
-        private int accountNumber= 0;
+        private int accountNumber = 0;
 
     public MyAccount(String name, String pin){
         this.name = name;
         this.pin = pin;
-        this.accountNumber =0;
+        this.accountNumber = 0;
     }
 
     public void deposit(int depositAmount) {

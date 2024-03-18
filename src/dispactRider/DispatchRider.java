@@ -1,4 +1,4 @@
-package Delivery;
+package dispactRider;
 
 
 import InvalidNumberOfDelivery.InvalidNumberOfDeliveryException;

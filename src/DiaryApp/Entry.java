@@ -12,7 +12,7 @@ public class Entry {
     public void setId(int id) {
         this.id = id;
     }
-    public int getId(){
+    public int  getId(){
         return id;
     }
     public String getTitleOfEntry(){
