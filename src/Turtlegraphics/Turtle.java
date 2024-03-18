@@ -1,11 +1,10 @@
 package Turtlegraphics;
 
 import static Turtlegraphics.Direction.EAST;
-import static Turtlegraphics.Direction.NORTH;
 public class Turtle {
     private Direction direction = EAST;
     public void turnLeft(){
-        direction = EAST;
+        direction = direction.turnLeft();
     }
     private Board board;
     private boolean isPenUp;
@@ -26,6 +25,17 @@ public class Turtle {
     }
 
     public void turnRight() {
+        direction = direction.turnRight();
+    }
 
+    public void moveForward(int numberOfPositions){
+        switch (direction){
+            case EAST -> moveForwardEast();
+
+        }
+    }
+
+    private void moveForwardEast() {
+        //currentPosition.setCollumn(currentPosition.getCollumn() + numberOfSteps -1);
     }
 }

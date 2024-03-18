@@ -2,8 +2,7 @@ package Turtlegraphics;
 
 import org.junit.jupiter.api.Test;
 
-import static Turtlegraphics.Direction.NORTH;
-import static Turtlegraphics.Direction.SOUTH;
+import static Turtlegraphics.Direction.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -40,29 +39,63 @@ public class TurtleTest {
     }
 
     @Test
-    public void  initialPositionOfTurtleOnBordFloorIsEastTest(){
-        Turtle turtle = new Turtle();
-        assertEquals(Direction.EAST,turtle.getCurrentPosition());
-        assertEquals(turtle.getCurrentPosition(), turtle.getPosition(0,0));
-
-    }
-
-    @Test
     public void  turtleTurnLeftOnBordFloorTest(){
         Turtle turtle = new Turtle();
-        assertEquals(Direction.EAST,turtle.getCurrentPosition());
+        assertEquals(EAST,turtle.getCurrentPosition());
         turtle.turnLeft();
         assertEquals(NORTH,turtle.getCurrentPosition());
 
     }
     @Test
+    public void  turtleTurnLeftAgainOnBordFloorTest(){
+        Turtle turtle = new Turtle();
+        assertEquals(EAST,turtle.getCurrentPosition());
+        turtle.turnLeft();
+        turtle.turnLeft();
+        turtle.turnLeft();
+        assertEquals(SOUTH,turtle.getCurrentPosition());
+
+    }
+
+    @Test
     public void  turtleTurnRightOnBordFloorTest(){
         Turtle turtle = new Turtle();
-       // assertEquals(Direction.EAST,turtle.getCurrentPosition());
+        assertEquals(EAST,turtle.getCurrentPosition());
+        turtle.turnRight();
+        turtle.turnRight();
+        turtle.turnRight();
+        assertEquals(NORTH, turtle.getCurrentPosition());
+
+    }
+
+    @Test
+    public void  turtleTurnRightTwiceAndLeftOnBordFloorTest(){
+        Turtle turtle = new Turtle();
+        assertEquals(EAST,turtle.getCurrentPosition());
+        turtle.turnRight();
+        turtle.turnRight();
+        turtle.turnLeft();
+        assertEquals(SOUTH,turtle.getCurrentPosition());
+
+    }
+    @Test
+    public void  turtleTurnLeftTwiceAndRightOnBordFloorTest(){
+        Turtle turtle = new Turtle();
+        assertEquals(EAST,turtle.getCurrentPosition());
+        turtle.turnLeft();
         turtle.turnLeft();
         turtle.turnRight();
-        turtle.turnRight();
-        assertEquals(SOUTH,turtle.getCurrentPosition());
+        assertEquals(NORTH,turtle.getCurrentPosition());
+    }
+
+    @Test
+    public void  initialPositionOfTurtleOnBordFloorIsEastTest(){
+        Turtle turtle = new Turtle();
+        assertEquals(EAST,turtle.getCurrentPosition());
+        turtle.moveForward(5);
+        Board board = new Board();
+        board.displayBoardFloor();
+        //assertEquals(, turtle.getPosition(0,0));
 
     }
 

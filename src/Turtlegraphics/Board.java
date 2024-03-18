@@ -6,15 +6,23 @@ public class Board {
     private final int[][] boardFloor = new int[20][20];
 
 
-    public int[][] getBoardFloor(){
+    public int[][] getBoardFloor() {
         int[][] newBoard = new int[boardFloor.length][boardFloor.length];
-        for(int row = 0; row < boardFloor.length; row++){
+        for (int row = 0; row < boardFloor.length; row++) {
             for (int col = 0; col < boardFloor.length; col++) {
                 newBoard[row][col] = boardFloor[row][col];
+                System.out.print(newBoard[row][col]+" ");
             }
+            System.out.println();
+
         }
         return newBoard;
     }
+        public void displayBoardFloor(){
+            getBoardFloor();
+        }
+
+
 
 
 }
