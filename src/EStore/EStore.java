@@ -5,9 +5,9 @@ import java.util.List;
 
 public class EStore {
 private List<User> users = new ArrayList<>();
-    public Customer registerCustomer(Customer customer) {
+private List<Item> items = new ArrayList<>();
+    public void registerCustomer(Customer customer) {
         users.add(customer);
-        return  customer;
     }
 
     public int getNumberOfUsers() {
@@ -17,6 +17,7 @@ private List<User> users = new ArrayList<>();
 
     }
 
-    public void buy() {
+    public void buyProduct(Customer customer, Product product) {
+
     }
 }

@@ -3,6 +3,8 @@ package EStore;
 import EStore.EStore;
 import org.junit.Test;
 import EStore.test.Customer;
+
+import static EStore.ProductCategory.GROCERIES;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class EStoreTest {
@@ -20,9 +22,9 @@ public class EStoreTest {
          Customer customer2 = new Customer("Adesanya",50, "adesanya@gmail.com", "N0 2 Babalola str Ogun state", "password", 2);
          eStore.registerCustomer(customer1);
          eStore.registerCustomer(customer2);
-         Product product = new Product();
-         eStore.buy(customer1, product);
-
+         Product product = new Product("Orange", 200, "sweet like fanta", GROCERIES);
+         Item item = new Item(2, product);
+         eStore.buyProduct(customer1,);
 
 
     }

@@ -8,6 +8,10 @@ public class Item {
         this.quantity =quantity;
         this.product =product;
     }
+
+    public Item(){
+
+    }
     public int getQuantity() {
         return quantity;
     }
