@@ -38,7 +38,7 @@ public class TicTacToe {
     }
 
     public void pickCell(int selectCell, CellValues cellValues) {
-            Player.validatePlayerTurn(cellValues);
+            Player.validatePlayerXTurn(cellValues);
             validateBoardCellRange(selectCell);
             validateEmptyCellOnBoard(selectCell, cellValues);
             isAWin();
@@ -121,8 +121,8 @@ public class TicTacToe {
          boolean isWonByRightDiagonal = boardCells[0][2] == boardCells[1][1] && boardCells[1][1]  == boardCells[2][0];
          boolean isWonByLeftDiagonal = boardCells[0][0] == boardCells[1][1] && boardCells[1][1] == boardCells[2][2];
 
-         boolean isAWinByRowColumnOrDiagonal =  isWonByFirstRow || isWonBySecondRow || isWonByThirdRow || isWonByFirstColumn || isWonBySecondColumn || isWonByThirdColumn || isWonByLeftDiagonal || isWonByRightDiagonal;
-         if (isAWinByRowColumnOrDiagonal) {
+         boolean isAWinByRowColOrDiagonal =  isWonByFirstRow || isWonBySecondRow || isWonByThirdRow || isWonByFirstColumn || isWonBySecondColumn || isWonByThirdColumn || isWonByLeftDiagonal || isWonByRightDiagonal;
+         if (isAWinByRowColOrDiagonal) {
              return CellValues.X;
          }else {
             return CellValues.O;

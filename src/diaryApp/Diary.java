@@ -1,4 +1,4 @@
-package DiaryApp;
+package diaryApp;
 
 import apps.InvalidIdException;
 import apps.InvalidPinException;

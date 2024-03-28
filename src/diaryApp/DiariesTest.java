@@ -1,4 +1,4 @@
-package DiaryApp;
+package diaryApp;
 
 import InvalidPasswordException.InvalidPasswordException;
 import InvalidUserNameException.InvalidUserNameException;

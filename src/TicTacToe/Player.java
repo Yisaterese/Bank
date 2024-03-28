@@ -18,25 +18,42 @@ public class Player {
         return false;
     }
 
-    public  static void validateInputCatchException() {
-        System.out.println("Player " + Player.validatePlayerTurn(cellValues) + " make a move");
+    public  static void validateInputCatchExceptionForX() {
+        System.out.println("Player " + Player.validatePlayerXTurn(cellValues) + " make a move");
             int inputCell = input.nextInt();
                 ticTacToe.validateBoardCellRange(inputCell);
                 ticTacToe.pickCell(inputCell, CellValues.X);
                 ticTacToe.displayBoardCells();
                 ticTacToe.isAWin();
         }
+    public  static void validateInputCatchExceptionForO() {
+        System.out.println("Player " + Player.validatePlayerOTurn(cellValues) + " make a move");
+        int inputCell = input.nextInt();
+        ticTacToe.validateBoardCellRange(inputCell);
+        ticTacToe.pickCell(inputCell, CellValues.O);
+        ticTacToe.displayBoardCells();
+        ticTacToe.isAWin();
+    }
 
 
     public String getName(){
         return name;
     }
 
-    public static CellValues validatePlayerTurn(CellValues inputCellValue) {
+    public static CellValues validatePlayerXTurn(CellValues inputCellValue) {
+
         if (inputCellValue == CellValues.X) {
             return CellValues.X;
         } else {
             return CellValues.O;
+        }
+    }
+    public static CellValues validatePlayerOTurn(CellValues inputCellValue) {
+
+        if (inputCellValue == CellValues.O) {
+            return CellValues.O;
+        } else {
+            return CellValues.X;
         }
     }
 }
