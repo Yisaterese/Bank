@@ -90,11 +90,9 @@ public class DiaryTest {
         assertFalse(diary.isLocked());
         diary.unLock("correctPin");
         assertTrue(diary.isLocked());
-        diary.createEntry("My first experience at beach", "I saw beautiful ladies");
-        diary.createEntry("My first experience in lagos", "I saw shege");
-        diary.upDateEntry(1, "My first day as a native", "Everything  was weird");
-        Entry diary1 = diary.findEntryById(1);
-        assertEquals("My first day as a native",diary1.getTitleOfEntry());
-
+        Entry myEntry =  diary.createEntry("My first experience at beach", "I saw beautiful ladies");
+        diary.upDateEntry(myEntry.getId(), "My first day as a native", "Everything  was weird");
+        myEntry = diary.findEntryById(myEntry.getId());
+        assertEquals("My first day as a native",diary.get(myEntry).getTitleOfEntry());
     }
 }

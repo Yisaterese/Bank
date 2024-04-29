@@ -40,10 +40,11 @@ private final String password;
         return entries.size();
     }
 
-    public void createEntry(String titleOfEntry, String bodyOfEntry) {
+    public Entry createEntry(String titleOfEntry, String bodyOfEntry) {
         Entry entry = new Entry(titleOfEntry, bodyOfEntry);
         entry.setId(id++);
         entries.add(entry);
+        return entry;
     }
 
     public void deleteEntry(int identification) {
@@ -51,7 +52,12 @@ private final String password;
         entries.remove(foundEntry);
         numberOfEntries--;
        // entries.remove(findEntryById(identification));
-
+    }
+    public Entry get(Entry myEntry){
+        for(Entry entry: entries){
+            if(entry.equals(myEntry))return entry;
+        }
+        throw new IllegalStateException("Entry not found");
     }
     public Entry findEntryById(int identification){
             for(Entry entry: entries){
@@ -79,9 +85,9 @@ private final String password;
 
     public void upDateEntry(int id, String titleOfEntry, String bodyOfEntry ) {
          Entry foundEntry = findEntryById(id);
+         entries.remove(foundEntry);
          foundEntry.setTitle(titleOfEntry);
          foundEntry.setBodyOfEntry(bodyOfEntry);
-         entries.remove(foundEntry);
          entries.add(foundEntry);
     }
 
