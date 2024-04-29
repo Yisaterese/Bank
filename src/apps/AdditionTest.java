@@ -12,7 +12,7 @@ public class AdditionTest {
 
     @Test
     public void addNumbersWithOutUsingAdditionOperator(){
-        Assertions.assertEquals(10,Addition.addWithOutAdding(20,-20,20,-10));
+        Assertions.assertEquals(-70,Addition.addWithOutAdding(-20,-20,-20,-10));
     }
 }
 
