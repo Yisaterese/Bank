@@ -2,7 +2,7 @@ package Turtlegraphics;
 
 import static Turtlegraphics.Direction.EAST;
 
-public class Board {
+public class    Board {
     private final int[][] boardFloor = new int[20][20];
 
 
