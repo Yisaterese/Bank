@@ -1,4 +1,4 @@
-package Collections.chapter17;
+package CollectionsChapter17.chapter17;
 
 import java.util.function.BiPredicate;
 
