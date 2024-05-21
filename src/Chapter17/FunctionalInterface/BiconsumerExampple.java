@@ -1,4 +1,4 @@
-package CollectionsChapter17.chapter17;
+package Chapter17.FunctionalInterface;
 
 import java.util.function.BiConsumer;
 
